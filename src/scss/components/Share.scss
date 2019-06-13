@@ -1,5 +1,8 @@
 .nav--appbar {
   padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
 
   & > .whatsapp {
     background-color: var(--whatsapp-color);
@@ -22,14 +25,13 @@
     text-decoration: none;
     padding: 10px 10px;
     border-radius: 3px;
-    align-content: center;
+    text-align: center;
     font-weight: 600;
     font-size: 0.8rem;
-    margin-left: 2rem;
-    width: 10rem;
+    display: inline-block;
 
     .fontawesomeicon {
-      padding: 10px;
+      padding: 0 10px;
       .icon {
         font-size: 0.9rem;
         color: var(--light-color);
