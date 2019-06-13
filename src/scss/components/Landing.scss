@@ -1,6 +1,3 @@
-$insta-color-1: #736edb;
-$insta-color-2: #f7854c;
-
 .landing {
   height: auto;
   width: 100vw;
@@ -12,6 +9,7 @@ $insta-color-2: #f7854c;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 0;
   }
 
   &--carousel {
@@ -27,14 +25,16 @@ $insta-color-2: #f7854c;
     background-image: url('/images/svg/islandplane.svg');
     height: auto;
     width: 100%;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
     &-container {
       height: auto;
-      width: 100%;
+      width: 100vw;
       padding: 20px;
+      display: flex;
+      justify-content: space-between;
     }
 
     &-tabs {
@@ -120,11 +120,10 @@ $insta-color-2: #f7854c;
     &--info {
       margin-top: 2.2rem;
       &-container {
-        & > .info--items {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       &-tabs {
@@ -143,7 +142,8 @@ $insta-color-2: #f7854c;
       }
       &-form {
         width: 100vw;
-        padding: 0 10px;
+        padding: 0;
+        margin-left: 0;
       }
     }
     &--blank {

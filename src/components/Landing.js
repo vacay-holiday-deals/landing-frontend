@@ -18,7 +18,7 @@ function Landing() {
         </section>
         <section className='landing--info'>
           <Container fluid={true} className='landing--info-container'>
-            <Row className='info--items'>
+            
               <div className='landing--info-tabs'>
                 <Tabs>
                   <div label='Overview'>Overview</div>
@@ -41,7 +41,7 @@ function Landing() {
                 <Sharebar />
                 <Form />
               </div>
-            </Row>
+           
           </Container>
         </section>
         <section className='landing--blank' />
