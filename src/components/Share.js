@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 function Share() {
   return (
     <div className='share'>
+      <h5>Tell a friend</h5>
       <Navbar className='nav--appbar'>
         <a href='hello' className='instagram'>
           <span className='fontawesomeicon'>

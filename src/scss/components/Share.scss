@@ -1,47 +1,65 @@
-.nav--appbar {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1rem;
-
-  & > .whatsapp {
-    background-color: var(--whatsapp-color);
-    color: var(--light-color);
-  }
-  & > .facebook {
-    background-color: var(--facebook-color);
-    color: var(--light-color);
-  }
-  & > .instagram {
-    background: linear-gradient(#736edbd2, #a86989d2, #f7854cd2);
-    color: var(--light-color);
-  }
-  & > .twitter {
-    background-color: var(--twitter-color);
-    color: var(--light-color);
-  }
-
-  & > a {
-    text-decoration: none;
-    padding: 10px 10px;
-    border-radius: 3px;
-    text-align: center;
+.share {
+  padding: 5px;
+  h5 {
+    font-size: 0.9rem;
     font-weight: 600;
-    font-size: 0.8rem;
-    display: inline-block;
+  }
+  & > .nav--appbar {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
 
-    .fontawesomeicon {
-      padding: 0 10px;
-      .icon {
-        font-size: 0.9rem;
-        color: var(--light-color);
+    & > .whatsapp {
+      background-color: var(--whatsapp-color);
+      color: var(--light-color);
+    }
+    & > .facebook {
+      background-color: var(--facebook-color);
+      color: var(--light-color);
+    }
+    & > .instagram {
+      background: linear-gradient(#736edbd2, #a86989d2, #f7854cd2);
+      color: var(--light-color);
+    }
+    & > .twitter {
+      background-color: var(--twitter-color);
+      color: var(--light-color);
+    }
+
+    & > a {
+      padding: 10px 10px;
+      border-radius: 3px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-block;
+
+      .fontawesomeicon {
+        padding: 0 10px;
+        .icon {
+          font-size: 0.9rem;
+          color: var(--light-color);
+        }
       }
     }
   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 700px) {
-  .nav--appbar {
-    display: none;
+  .share {
+    .nav--appbar {
+      & > a {
+        padding: 10px 5px;
+        font-size: 0.6rem;
+
+        .fontawesomeicon {
+          padding: 0 5px;
+          .icon {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
   }
 }
