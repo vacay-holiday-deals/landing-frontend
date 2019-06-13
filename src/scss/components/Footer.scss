@@ -66,6 +66,7 @@
   }
   .icon {
     color: var(--accent-color);
+    font-size: 0.85rem;
   }
   .hr {
     width: 100%;
@@ -138,7 +139,7 @@
       width: 12rem;
     }
     .link--items {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       &:hover {
         text-decoration: none;
       }
