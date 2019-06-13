@@ -1,0 +1,100 @@
+.top-bar {
+  background: var(--dark-color);
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &--contact {
+    color: var(--light-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    &-info {
+      margin: 0 15px;
+      font-size: 0.7rem;
+      color: var(--light-color);
+    }
+    .contact-links {
+      margin: 0 15px;
+      font-family: var(--primary-font);
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &--social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+
+    &-links {
+      margin: 0 15px;
+      font-size: 0.8rem;
+      color: var(--light-color);
+    }
+  }
+
+  .icon {
+    color: var(--accent-color);
+    font-size: 15px;
+  }
+}
+
+// creating a media query to handle the responsiveness of the page
+
+// Portrait mode (phone)
+@media only screen and (min-device-width: 320px) and (max-device-width: 750px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .top-bar {
+    span.contact-links {
+      display: none;
+    }
+
+    .icon {
+      font-size: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 700px) {
+  .top-bar {
+    span.contact-links {
+      display: none;
+    }
+
+    .icon {
+      font-size: 10px;
+    }
+  }
+}
+
+// Portrait mode (tablet)
+@media only screen and (min-device-width: 700px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .top-bar {
+    .icon {
+      font-size: 12px;
+    }
+    span.contact-links {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+  .top-bar {
+    span.contact-links {
+      display: none;
+    }
+
+    .icon {
+      font-size: 10px;
+    }
+  }
+}
+
+// Landscape mode (phone)
+@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+}

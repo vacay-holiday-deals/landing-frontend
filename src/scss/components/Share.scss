@@ -1,0 +1,39 @@
+.nav--appbar {
+  padding: 20px;
+
+  & > .whatsapp {
+    background-color: var(--whatsapp-color);
+    color: var(--light-color);
+  }
+  & > .facebook {
+    background-color: var(--facebook-color);
+    color: var(--light-color);
+  }
+  & > .instagram {
+    background: linear-gradient(#736edbd2, #a86989d2, #f7854cd2);
+    color: var(--light-color);
+  }
+  & > .twitter {
+    background-color: var(--twitter-color);
+    color: var(--light-color);
+  }
+
+  & > a {
+    text-decoration: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    align-content: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-left: 2rem;
+    width: 10rem;
+
+    .fontawesomeicon {
+      padding: 10px;
+      .icon {
+        font-size: 0.9rem;
+        color: var(--light-color);
+      }
+    }
+  }
+}

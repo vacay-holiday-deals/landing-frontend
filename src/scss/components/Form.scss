@@ -1,0 +1,56 @@
+.Form--container {
+  padding: 20px;
+  background: var(--light-color);
+  opacity: 0.9;
+}
+
+.form--group {
+  width: 100%;
+  padding: 2px;
+}
+.label {
+  font-family: var(--primary-font);
+  font-size: 0.9rem;
+}
+
+.form--control {
+  border-radius: 2px;
+  height: 3.5rem;
+  max-width: 100%;
+  background: var(--light-color);
+  font-family: var(--primary-font);
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &::placeholder {
+    font-family: var(--primary-font);
+    color: #9c9c9c;
+  }
+}
+.textarea {
+  min-height: 10rem;
+  font-size: 0.9rem;
+  font-family: var(--primary-font);
+  border-radius: 2px;
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &::placeholder {
+    font-family: var(--primary-font);
+    color: #9c9c9c;
+    font-family: var(--primary-font);
+    font-size: 0.9rem;
+  }
+}
+.form--btn {
+  height: 3.5rem;
+  background: var(--primary-color);
+  border-radius: 2px;
+  font-family: var(--primary-font);
+  font-weight: 700;
+  box-shadow: var(--box-shadow);
+}
