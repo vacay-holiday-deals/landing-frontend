@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--box-shadow-2);
-  background: var(--light-color);
+  background: var(--white-color);
 
   &--logo {
     padding: 0 10px;
@@ -23,7 +23,7 @@
     & > .btn {
       padding: 10px 20px;
       background: var(--primary--color-light);
-      color: var(--light-color);
+      color: var(--white-color);
       font-size: 0.83rem;
       border-radius: 5px;
       -webkit-box-shadow: var(--box-shadow);
