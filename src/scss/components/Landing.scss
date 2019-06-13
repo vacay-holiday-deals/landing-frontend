@@ -58,10 +58,6 @@ $insta-color-2: #f7854c;
       flex-direction: column;
       justify-content: space-between;
       padding: 0 20px;
-
-      & > .form {
-        flex: 5;
-      }
     }
   }
   &--blank {
@@ -88,9 +84,22 @@ $insta-color-2: #f7854c;
       max-width: 100vw;
     }
     &--info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      & > .info--items {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &-tabs {
+        width: 100vw;
+
+        & > .more--info {
+          padding: 10px 10px;
+        }
+      }
+      &-form {
+        width: 100vw;
+        padding: 0 10px;
+      }
     }
   }
 }
@@ -102,17 +111,43 @@ $insta-color-2: #f7854c;
       flex-direction: column;
       justify-content: space-between;
       height: auto;
+      padding: 0;
     }
     &--carousel {
-      height: 40vh;
+      height: 30vh;
       max-width: 100vw;
     }
     &--info {
+      margin-top: 2.2rem;
       &-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        & > .info--items {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
       }
+
+      &-tabs {
+        width: 100vw;
+
+        & > .more--info {
+          padding: 10px 10px;
+
+          h4 {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+      &-form {
+        width: 100vw;
+        padding: 0 10px;
+      }
+    }
+    &--blank {
+      display: none;
     }
   }
 }

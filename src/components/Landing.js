@@ -18,8 +18,8 @@ function Landing() {
         </section>
         <section className='landing--info'>
           <Container fluid={true} className='landing--info-container'>
-            <Row>
-              <Col xs={6} md={6} sm className='landing--info-tabs'>
+            <Row className='info--items'>
+              <div className='landing--info-tabs'>
                 <Tabs>
                   <div label='Overview'>Overview</div>
                   <div label='Itinerary'>Itinerary</div>
@@ -36,11 +36,11 @@ function Landing() {
                     debitis asperiores totam voluptatem amet.
                   </p>
                 </div>
-              </Col>
-              <Col xs={6} md={6} sm className='landing--info-form'>
+              </div>
+              <div className='landing--info-form'>
                 <Sharebar />
                 <Form />
-              </Col>
+              </div>
             </Row>
           </Container>
         </section>

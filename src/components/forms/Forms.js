@@ -6,7 +6,6 @@ import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 
 function OfferForm() {
-  const onSubmit = () => {}
 
   return (
     <Container className='Form--container'>
@@ -46,7 +45,7 @@ function OfferForm() {
           <Col>
             <Form.Group className='form--group'>
               <Form.Label className='label'>
-                Number (add your country code)
+                Number (with country code)
               </Form.Label>
 
               <Form.Control

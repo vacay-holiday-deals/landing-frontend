@@ -54,3 +54,36 @@
   font-weight: 700;
   box-shadow: var(--box-shadow);
 }
+
+@media only screen and (min-width: 320px) and (max-width: 700px) {
+  .Form--container {
+    padding: 10px;
+    opacity: 1;
+  }
+
+  h5 {
+    font-size: 0.9rem;
+  }
+  .label {
+    font-size: 0.7rem;
+  }
+
+  .form--control {
+    height: 3rem;
+    &::placeholder {
+      font-size: 0.7rem;
+    }
+  }
+  .textarea {
+    min-height: 7rem;
+    font-size: 0.7rem;
+    &::placeholder {
+      font-size: 0.7rem;
+    }
+  }
+  .form--btn {
+    height: 3rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
