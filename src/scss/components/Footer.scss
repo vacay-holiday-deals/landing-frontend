@@ -93,8 +93,8 @@
     &--container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin: 0 5%;
-      width: 80%;
+      margin-left: 0;
+      width: 100%;
       grid-gap: 3px;
       height: auto;
     }
@@ -124,8 +124,8 @@
     &--container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin: 0 5%;
-      width: 80%;
+      margin: 0;
+      width: 100%;
       grid-gap: 3px;
       height: auto;
       padding-left: 5rem;
