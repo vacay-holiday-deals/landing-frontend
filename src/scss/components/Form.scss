@@ -29,6 +29,10 @@
     color: #9c9c9c;
   }
 }
+option::placeholder {
+  font-family: var(--primary-font);
+  color: #9c9c9c;
+}
 .textarea {
   min-height: 10rem;
   font-size: 0.9rem;

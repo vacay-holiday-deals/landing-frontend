@@ -6,7 +6,6 @@ import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 
 function OfferForm() {
-
   return (
     <Container className='Form--container'>
       <h5>Send us your details</h5>
@@ -95,7 +94,7 @@ function OfferForm() {
           <Form.Label className='label'>Hotel Budget</Form.Label>
 
           <Form.Control as='select' className='form--control select'>
-            <option>choose...</option>
+            <option className='choose'>choose...</option>
             <option>3 star</option>
             <option>4 star</option>
             <option>5 star</option>
