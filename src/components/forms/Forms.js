@@ -9,7 +9,7 @@ function OfferForm() {
   return (
     <Container className='Form--container'>
       <h5>Send us your details</h5>
-      <Form onSubmit='MAILTO:info@vacay.co.ke'>
+      <Form action='MAILTO:mymbugua@gmail.com'>
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>
 
@@ -49,7 +49,7 @@ function OfferForm() {
 
               <Form.Control
                 placeholder='+254'
-                type='text'
+                type='number'
                 className='form--control'
               />
             </Form.Group>

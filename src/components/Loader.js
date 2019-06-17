@@ -1,12 +1,14 @@
-import React from "react";
-import Loader from "react-loader-spinner";
+import React from 'react'
+import Loader from 'react-loader-spinner'
 
 function Load() {
   return (
-    <div className="loader">
-      <Loader type="ThreeDots" color="#0068b3" height={500} width={500} />
+    <div className='load'>
+      <div className='load--loader'>
+        <Loader type='Plane' color='#0068b3' height={150} width={150} />
+      </div>
     </div>
-  );
+  )
 }
 
-export default Load;
+export default Load
