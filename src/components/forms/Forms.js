@@ -9,7 +9,7 @@ function OfferForm() {
   return (
     <Container className='Form--container'>
       <h5>Send us your details</h5>
-      <Form action='MAILTO:mymbugua@gmail.com'>
+      <Form action='http://localhost:5000/api/result' method='get'>
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>
 
@@ -17,6 +17,7 @@ function OfferForm() {
             type='text'
             placeholder='name'
             className='form--control'
+            name='name'
           />
         </Form.Group>
 
@@ -27,13 +28,17 @@ function OfferForm() {
             type='email'
             placeholder='email'
             className='form--control'
+            name='email'
           />
         </Form.Group>
         <Row>
           <Col>
             <Form.Group className='form--group'>
               <Form.Label className='label'>Country</Form.Label>
-              <Form.Control as='select' className='form--control'>
+              <Form.Control
+                as='select'
+                className='form--control'
+                name='country'>
                 <option>choose...</option>
                 {Country.allCountries.map((name, key) => (
                   <option key={name.iso2}>{name.name}</option>

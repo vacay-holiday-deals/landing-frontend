@@ -1,5 +1,6 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+
 const images = [
   {
     label: 'Dubai – Burj Khalifa, Dubai',
@@ -29,7 +30,6 @@ function slider() {
       <Carousel className='carousel--main'>
         {images.map(imag => (
           <Carousel.Item key={imag.label} className='carousel--main-item'>
-            {console.log(imag.imgPath)}
             <img
               src={imag.imgPath}
               alt={imag.label}
