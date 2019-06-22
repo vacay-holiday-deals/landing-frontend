@@ -5,16 +5,19 @@ import Form from './forms/Forms'
 import Tabs from './tabs/Tabs'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
-
+import jsonxml from 'jsontoxml'
 
 function Landing() {
   const [offer, setOffer] = useState([])
 
   useEffect(() => {
     axios
-      .get('https://vacayapi.herokuapp.com/api/getOffers')
+      .get('https://vacayapi.herokuapp.com/api/getOffer')
+      //.get('http://localhost:5000/api/getOffer')
       .then(res => {
         // setOffer to the last offer in the array
+        const xml = jsonxml(res.data)
+        console.log(xml)
         const offers = res.data.slice(-1)[0]
         setOffer(offers)
       })
@@ -31,7 +34,7 @@ function Landing() {
         <section className='landing--carousel'>
           <div className='carousel--container'>
             <div className='carousel--heading'>
-              <h4 className='title'>{JSON.stringify(title)}</h4>
+              <h4 className='title'>{title}</h4>
             </div>
             <Carousel />
           </div>
