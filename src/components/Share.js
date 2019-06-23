@@ -12,7 +12,11 @@ function Share() {
     <div className='share'>
       <h5>Tell a friend</h5>
       <Navbar className='nav--appbar'>
-        <a href='hello' className='instagram'>
+        <a
+          href={`href="http://instagram.com/sharer.php?u=${url}`}
+          className='instagram'
+          rel='noopener noreferrer'
+          target='_blank'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -30,13 +34,19 @@ function Share() {
         </a>
         <a
           href={`http://twitter.com/share?url=${url}&hashtags=#vacayholidaydeals`}
-          className='twitter'>
+          className='twitter'
+          rel='noopener noreferrer'
+          target='_blank'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
           twitter
         </a>
-        <a href={`whatsapp://send?text=${url}`} className='whatsapp'>
+        <a
+          href={`whatsapp://send?text=${url}`}
+          className='whatsapp'
+          rel='noopener noreferrer'
+          target='_blank'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
