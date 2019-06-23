@@ -20,19 +20,23 @@ function Share() {
         </a>
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
-          className='facebook'>
+          className='facebook'
+          target='_blank'
+          rel='noopener noreferrer'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
           facebook
         </a>
-        <a href='hello' className='twitter'>
+        <a
+          href={`http://twitter.com/share?url=${url}&hashtags=#vacayholidaydeals`}
+          className='twitter'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
           twitter
         </a>
-        <a href='hello' className='whatsapp'>
+        <a href={`whatsapp://send?text=${url}`} className='whatsapp'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
