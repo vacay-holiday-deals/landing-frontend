@@ -92,39 +92,6 @@
 // media queries for a responsive design
 
 // Portrait mode (phone)
-@media only screen and (min-device-width: 300px) and (max-device-width: 700px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .landing {
-    &--container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: auto;
-    }
-    &--carousel {
-      height: 40vh;
-      max-width: 100vw;
-    }
-    &--info {
-      & > .info--items {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      &-tabs {
-        width: 100vw;
-
-        & > .more--info {
-          padding: 10px 10px;
-        }
-      }
-      &-form {
-        width: 100vw;
-        padding: 0 10px;
-      }
-    }
-  }
-}
-
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .landing {
     &--container {
@@ -137,6 +104,16 @@
     &--carousel {
       height: 30vh;
       max-width: 100vw;
+
+      & > .carousel--container {
+        & > .carousel--heading {
+          & > .title {
+            font-size: 0.8rem;
+            opacity: 1;
+            color: var(--light-color);
+          }
+        }
+      }
     }
     &--info {
       margin-top: 5rem;

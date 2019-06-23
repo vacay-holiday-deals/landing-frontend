@@ -16,8 +16,6 @@ function Landing() {
       //.get('http://localhost:5000/api/getOffer')
       .then(res => {
         // setOffer to the last offer in the array
-        const xml = jsonxml(res.data)
-        console.log(xml)
         const offers = res.data.slice(-1)[0]
         setOffer(offers)
       })

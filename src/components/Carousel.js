@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import axios from 'axios'
 
-const images = [
+const image = [
   {
     label: 'Dubai – Burj Khalifa, Dubai',
     imgPath:
@@ -24,22 +25,30 @@ const images = [
   }
 ]
 
-function slider() {
+function Slider() {
+  const [offer, setOffer] = useState([])
+
+  useEffect(() => {
+    axios
+      .get('https://vacayapi.herokuapp.com/api/getOffer')
+      .then(res => {
+        console.log(res.data)
+        setOffer(res.data.slice(-1)[0])
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+  const { images } = offer
+  console.log(images)
   return (
     <div className='carousel--container'>
       <Carousel className='carousel--main'>
-        {images.map(imag => (
-          <Carousel.Item key={imag.label} className='carousel--main-item'>
-            <img
-              src={imag.imgPath}
-              alt={imag.label}
-              className='carousel--main-img'
-            />
-          </Carousel.Item>
-        ))}
+        <Carousel.Item key='' className='carousel--main-item'>
+          <img src={images} alt='imags' className='carousel--main-img' />
+        </Carousel.Item>
       </Carousel>
     </div>
   )
 }
 
-export default slider
+export default Slider
