@@ -5,7 +5,6 @@ import Form from './forms/Forms'
 import Tabs from './tabs/Tabs'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
-import jsonxml from 'jsontoxml'
 
 function Landing() {
   const [offer, setOffer] = useState([])
@@ -13,7 +12,6 @@ function Landing() {
   useEffect(() => {
     axios
       .get('https://vacayapi.herokuapp.com/api/getOffer')
-      //.get('http://localhost:5000/api/getOffer')
       .then(res => {
         // setOffer to the last offer in the array
         const offers = res.data.slice(-1)[0]

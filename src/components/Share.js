@@ -4,6 +4,10 @@ import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import Navbar from 'react-bootstrap/Navbar'
 
 function Share() {
+  const url = window.location.href
+
+  console.log(url)
+
   return (
     <div className='share'>
       <h5>Tell a friend</h5>
@@ -14,7 +18,9 @@ function Share() {
           </span>
           instagram
         </a>
-        <a href='hello' className='facebook'>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+          className='facebook'>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
