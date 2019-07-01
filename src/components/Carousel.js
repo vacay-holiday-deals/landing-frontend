@@ -32,14 +32,14 @@ function Slider() {
     axios
       .get('https://vacayapi.herokuapp.com/api/getOffer')
       .then(res => {
-        console.log(res.data)
+       
         setOffer(res.data.slice(-1)[0])
       })
       .catch(err => console.log(err))
   }, [])
 
   const { images } = offer
-  console.log(images)
+
   return (
     <div className='carousel--container'>
       <Carousel className='carousel--main'>

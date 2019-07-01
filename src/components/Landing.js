@@ -11,9 +11,11 @@ function Landing() {
 
   useEffect(() => {
     axios
-      .get('https://vacayapi.herokuapp.com/api/getOffer')
+      //.get('https://vacayapi.herokuapp.com/api/getOffer')
+      .get('http://localhost:5000/api/getOffer')
       .then(res => {
-        // setOffer to the last offer in the array
+        // setOffer to the last offer in the array 
+        console.log(res.data)
         const offers = res.data.slice(-1)[0]
         setOffer(offers)
       })

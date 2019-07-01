@@ -1,22 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import Navbar from 'react-bootstrap/Navbar'
 
 function Share() {
   const url = window.location.href
+  const [counter, setCounter] = useState(0)
 
-  console.log(url)
+  const handleClickInstagram = () => {
+    setCounter(counter + 1)
+    console.log(counter)
+  }
+  const handleClickFacebook = () => {
+    setCounter(counter + 1)
+    console.log(counter)
+  }
+  const handleClickTwitter = () => {
+    setCounter(counter + 1)
+    console.log(counter)
+  }
+  const handleClickWhatsapp = () => {
+    setCounter(counter + 1)
+    console.log(counter)
+  }
 
   return (
     <div className='share'>
       <h5>Tell a friend</h5>
       <Navbar className='nav--appbar'>
         <a
-          href={`href="http://instagram.com/sharer.php?u=${url}`}
+          href={`http://instagram.com/sharer.php?u=${url}`}
           className='instagram'
           rel='noopener noreferrer'
-          target='_blank'>
+          target='_blank'
+          onClick={handleClickInstagram}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -26,7 +43,8 @@ function Share() {
           href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
           className='facebook'
           target='_blank'
-          rel='noopener noreferrer'>
+          rel='noopener noreferrer'
+          onClick={handleClickFacebook}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -36,7 +54,8 @@ function Share() {
           href={`http://twitter.com/share?url=${url}&hashtags=#vacayholidaydeals`}
           className='twitter'
           rel='noopener noreferrer'
-          target='_blank'>
+          target='_blank'
+          onClick={handleClickTwitter}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -46,7 +65,8 @@ function Share() {
           href={`whatsapp://send?text=${url}`}
           className='whatsapp'
           rel='noopener noreferrer'
-          target='_blank'>
+          target='_blank'
+          onClick={handleClickWhatsapp}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
