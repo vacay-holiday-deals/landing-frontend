@@ -11,8 +11,8 @@ function Landing() {
 
   useEffect(() => {
     axios
-      //.get('https://vacayapi.herokuapp.com/api/getOffer')
-      .get('http://localhost:5000/api/getOffer')
+      .get('https://vacayapi.herokuapp.com/api/getOffer')
+      //.get('http://localhost:5000/api/getOffer')
       .then(res => {
         // setOffer to the last offer in the array 
         console.log(res.data)
