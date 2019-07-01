@@ -17,6 +17,9 @@
       margin: 0 15px;
       font-size: 0.7rem;
       color: var(--light-color);
+      &:hover {
+        color: var(--primary-grey);
+      }
     }
     .contact-links {
       margin: 0 15px;

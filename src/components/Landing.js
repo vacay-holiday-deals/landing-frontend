@@ -12,10 +12,8 @@ function Landing() {
   useEffect(() => {
     axios
       .get('https://vacayapi.herokuapp.com/api/getOffer')
-      //.get('http://localhost:5000/api/getOffer')
       .then(res => {
-        // setOffer to the last offer in the array 
-        console.log(res.data)
+        // setOffer to the last offer in the array
         const offers = res.data.slice(-1)[0]
         setOffer(offers)
       })
@@ -41,14 +39,22 @@ function Landing() {
           <Container fluid={true} className='landing--info-container'>
             <div className='landing--info-tabs'>
               <Tabs>
-                <div label='Overview'>{overview}</div>
-                <div label='Itinerary'>{itinerary}</div>
-                <div label='Inclusions & Exclusions'>{inclusion}</div>
-                <div label='Price'>{price}</div>
+                <div label='Overview'>
+                  <p>{overview}</p>
+                </div>
+                <div label='Itinerary'>
+                  <p>{itinerary}</p>
+                </div>
+                <div label='Inclusions & Exclusions'>
+                  <p>{inclusion}</p>
+                </div>
+                <div label='Price'>
+                  <p>{price}</p>
+                </div>
               </Tabs>
               <div className='more--info'>
                 <h4>Additional Information</h4>
-                {addinfo}
+                <p>{addinfo}</p>
               </div>
             </div>
             <div className='landing--info-form'>

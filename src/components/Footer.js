@@ -30,16 +30,20 @@ function Footer() {
         <div className='footer--resources cards'>
           <h3 className='footer--header'>Resources</h3>
           <div className='items'>
-            <a href='links' className='link--items'>
+            <a
+              href='https://vacay.co.ke/trip-now-pay-later/'
+              className='link--items'>
               Trip Now Pay Later
             </a>
-            <a href='links' className='link--items'>
+            <a href='https://vacay.co.ke/reviews/' className='link--items'>
               Reviews
             </a>
-            <a href='links' className='link--items'>
+            <a href='https://vacay.co.ke/blog/' className='link--items'>
               Blog
             </a>
-            <a href='links' className='link--items'>
+            <a
+              href='https://vacay.co.ke/vacay-holiday-deals-privacy-policy/links'
+              className='link--items'>
               Privacy and Policy
             </a>
           </div>
@@ -47,16 +51,20 @@ function Footer() {
         <div className='footer--links cards'>
           <h3 className='footer--header'>Links</h3>
           <div className='items'>
-            <a href='links' className='link--items'>
+            <a href='https://vacay.co.ke' className='link--items'>
               Home
             </a>
-            <a href='links' className='link--items'>
+            <a
+              href='https://vacay.co.ke/destinations-in-africa/'
+              className='link--items'>
               Destinations
             </a>
-            <a href='links' className='link--items'>
+            <a
+              href='https://vacay.co.ke/kenya-tours/resident-packages/'
+              className='link--items'>
               Packages
             </a>
-            <a href='links' className='link--items'>
+            <a href='https://vacay.co.ke/flights/' className='link--items'>
               Flights
             </a>
           </div>

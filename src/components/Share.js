@@ -5,23 +5,22 @@ import Navbar from 'react-bootstrap/Navbar'
 
 function Share() {
   const url = window.location.href
-  const [counter, setCounter] = useState(0)
+  const [counterFacebook, setCounterFacebook] = useState(0)
+  const [counterInstagram, setCounterInstagram] = useState(0)
+  const [counterWhatsapp, setCounterWhatsapp] = useState(0)
+  const [counterTwitter, setCounterTwitter] = useState(0)
 
   const handleClickInstagram = () => {
-    setCounter(counter + 1)
-    console.log(counter)
+    setCounterInstagram(counterInstagram + 1)
   }
   const handleClickFacebook = () => {
-    setCounter(counter + 1)
-    console.log(counter)
+    setCounterFacebook(counterFacebook + 1)
   }
   const handleClickTwitter = () => {
-    setCounter(counter + 1)
-    console.log(counter)
+    setCounterTwitter(counterTwitter + 1)
   }
   const handleClickWhatsapp = () => {
-    setCounter(counter + 1)
-    console.log(counter)
+    setCounterWhatsapp(counterWhatsapp + 1)
   }
 
   return (
