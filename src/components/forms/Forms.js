@@ -21,7 +21,7 @@ function OfferForm() {
 
   useEffect(() => {
     axios
-      .get('https://vacayapi.herokuapp.com/api/getOffer')
+      .get(`https://vacayapi.herokuapp.com/api/getOffer`)
       .then(res => {
         // setOffer to the last offer in the array
         const offers = res.data.slice(-1)[0]
@@ -35,6 +35,7 @@ function OfferForm() {
   const { title } = offer
 
   const handleSubmit = e => {
+    e.preventDefault()
     const details = {
       Package: title,
       Name: name,
@@ -49,7 +50,7 @@ function OfferForm() {
     }
 
     axios
-      .post('http://vacayapi.herokuapp.com/api/uploadDetail', details, {
+      .post('https://vacayapi.herokuapp.com/api/uploadDetail', details, {
         headers: {
           'Content-Type': 'application/json'
         }
