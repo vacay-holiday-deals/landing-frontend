@@ -10,18 +10,7 @@ function Share() {
   const [counterWhatsapp, setCounterWhatsapp] = useState(0)
   const [counterTwitter, setCounterTwitter] = useState(0)
 
-  const handleClickInstagram = () => {
-    setCounterInstagram(counterInstagram + 1)
-  }
-  const handleClickFacebook = () => {
-    setCounterFacebook(counterFacebook + 1)
-  }
-  const handleClickTwitter = () => {
-    setCounterTwitter(counterTwitter + 1)
-  }
-  const handleClickWhatsapp = () => {
-    setCounterWhatsapp(counterWhatsapp + 1)
-  }
+
 
   return (
     <div className='share'>
@@ -32,7 +21,7 @@ function Share() {
           className='instagram'
           rel='noopener noreferrer'
           target='_blank'
-          onClick={handleClickInstagram}>
+          onClick={(e)=>{setCounterInstagram(counterInstagram + 1)}}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -43,7 +32,7 @@ function Share() {
           className='facebook'
           target='_blank'
           rel='noopener noreferrer'
-          onClick={handleClickFacebook}>
+          onClick={(e)=>{setCounterFacebook(counterFacebook + 1)}}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -54,7 +43,7 @@ function Share() {
           className='twitter'
           rel='noopener noreferrer'
           target='_blank'
-          onClick={handleClickTwitter}>
+          onClick={(e)=>{setCounterTwitter(counterTwitter + 1)}}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>
@@ -65,7 +54,7 @@ function Share() {
           className='whatsapp'
           rel='noopener noreferrer'
           target='_blank'
-          onClick={handleClickWhatsapp}>
+          onClick={(e)=>{setCounterWhatsapp(counterWhatsapp + 1)}}>
           <span className='fontawesomeicon'>
             <FontAwesomeIcon icon={faShareAlt} className='icon' />
           </span>

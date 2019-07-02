@@ -9,7 +9,6 @@ function Slider() {
     axios
       .get('https://vacayapi.herokuapp.com/api/getOffer')
       .then(res => {
-       
         setOffer(res.data.slice(-1)[0])
       })
       .catch(err => console.log(err))

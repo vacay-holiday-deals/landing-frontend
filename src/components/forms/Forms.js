@@ -17,43 +17,6 @@ function OfferForm() {
   const [budget, setBudget] = useState('')
   const [info, setInfo] = useState('')
 
-  const handleNameChange = e => {
-    e.preventDefault()
-    setName(e.target.value)
-  }
-  const handleEmailChange = e => {
-    e.preventDefault()
-    setEmail(e.target.value)
-  }
-  const handleNationalityChange = e => {
-    e.preventDefault()
-    setNationality(e.target.value)
-  }
-  const handleNumberChange = e => {
-    e.preventDefault()
-    setNumber(e.target.value)
-  }
-  const handleDepartureChange = e => {
-    e.preventDefault()
-    setDeparture(e.target.value)
-  }
-  const handleAdultChange = e => {
-    e.preventDefault()
-    setAdult(e.target.value)
-  }
-  const handleChildrenChange = e => {
-    e.preventDefault()
-    setChildren(e.target.value)
-  }
-  const handleBudgetChange = e => {
-    e.preventDefault()
-    setBudget(e.target.value)
-  }
-  const handleInfoChange = e => {
-    e.preventDefault()
-    setInfo(e.target.value)
-  }
-
   const [offer, setOffers] = useState([])
 
   useEffect(() => {
@@ -72,7 +35,6 @@ function OfferForm() {
   const { title } = offer
 
   const handleSubmit = e => {
-    e.preventDefault()
     const details = {
       Package: title,
       Name: name,
@@ -82,21 +44,12 @@ function OfferForm() {
       Departure: departure,
       Adults: adult,
       Children: children,
+      Budget: budget,
       Info: info
     }
 
-    window.location.href = `mailto:info@vacay.co.ke?subject=${title}&body= Package : ${
-      details.Package
-    }  Name : ${details.Name} Email : ${details.Email} Nationality : ${
-      details.Email
-    } Number : ${details.Number} date of departure : ${
-      details.Departure
-    } number of adults : ${details.Adults} number of children : ${
-      details.Children
-    } Any other information : ${details.Info}&cc=mymbugua@gmail.com`
-
     axios
-      .post('http://localhost:5000/api/uploadDetail', details, {
+      .post('http://vacayapi.herokuapp.com/api/uploadDetail', details, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -108,8 +61,6 @@ function OfferForm() {
         console.log(error)
       })
   }
-
-  const originCountry = Country.allCountries[115].name
 
   return (
     <Container className='Form--container'>
@@ -123,7 +74,9 @@ function OfferForm() {
             placeholder='name'
             className='form--control'
             name='name'
-            onChange={handleNameChange}
+            onChange={e => {
+              setName(e.target.value)
+            }}
             value={name}
           />
         </Form.Group>
@@ -136,7 +89,7 @@ function OfferForm() {
             placeholder='email'
             className='form--control'
             name='email'
-            onChange={handleEmailChange}
+            onChange={e => setEmail(e.target.value)}
             value={email}
           />
         </Form.Group>
@@ -148,9 +101,11 @@ function OfferForm() {
                 as='select'
                 className='form--control'
                 name='nationality'
-                onChange={handleNationalityChange}
+                onChange={e => {
+                  setNationality(e.target.value)
+                }}
                 value={nationality}>
-                <option>{originCountry}</option>
+                <option>Kenya</option>
                 {Country.allCountries.map((name, key) => (
                   <option key={name.iso2}>{name.name}</option>
                 ))}
@@ -167,7 +122,9 @@ function OfferForm() {
                 placeholder='+254'
                 type='number'
                 className='form--control'
-                onChange={handleNumberChange}
+                onChange={e => {
+                  setNumber(e.target.value)
+                }}
                 value={number}
               />
             </Form.Group>
@@ -181,7 +138,9 @@ function OfferForm() {
             type='date'
             placeholder='departure'
             className='form--control'
-            onChange={handleDepartureChange}
+            onChange={e => {
+              setDeparture(e.target.value)
+            }}
             value={departure}
           />
         </Form.Group>
@@ -194,7 +153,9 @@ function OfferForm() {
                 type='Number'
                 placeholder='adults'
                 className='form--control'
-                onChange={handleAdultChange}
+                onChange={e => {
+                  setAdult(e.target.value)
+                }}
                 value={adult}
               />
             </Form.Group>
@@ -207,7 +168,9 @@ function OfferForm() {
                 type='Number'
                 placeholder='children'
                 className='form--control'
-                onChange={handleChildrenChange}
+                onChange={e => {
+                  setChildren(e.target.value)
+                }}
                 value={children}
               />
             </Form.Group>
@@ -220,7 +183,9 @@ function OfferForm() {
           <Form.Control
             as='select'
             className='form--control select'
-            onChange={handleBudgetChange}
+            onChange={e => {
+              setBudget(e.target.value)
+            }}
             value={budget}>
             <option className='choose'>3 star</option>
             <option>4 star</option>
@@ -236,7 +201,9 @@ function OfferForm() {
             placeholder='other details'
             size='lg'
             className='textarea'
-            onChange={handleInfoChange}
+            onChange={e => {
+              setInfo(e.target.value)
+            }}
             value={info}
           />
         </Form.Group>
