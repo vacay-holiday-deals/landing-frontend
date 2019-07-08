@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import axios from 'axios'
+import ImageView from './ImageView'
 
 function Slider() {
   const [offer, setOffer] = useState([])
@@ -14,15 +15,14 @@ function Slider() {
       .catch(err => console.log(err))
   }, [])
 
+  console.log(offer)
+
   const { images } = offer
+  console.log(images)
 
   return (
     <div className='carousel--container'>
-      <Carousel className='carousel--main'>
-        <Carousel.Item key='' className='carousel--main-item'>
-          <img src={images} alt='imags' className='carousel--main-img' />
-        </Carousel.Item>
-      </Carousel>
+      <ImageView images={images} />
     </div>
   )
 }

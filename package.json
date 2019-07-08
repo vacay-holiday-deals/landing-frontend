@@ -31,8 +31,10 @@
     "react-lazy-load": "^3.0.13",
     "react-loader-spinner": "^2.3.0",
     "react-private-route": "^1.1.2",
+    "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

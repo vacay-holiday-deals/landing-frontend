@@ -5,11 +5,15 @@ import AppHistory from './AppHistory'
 import PrivateRoute from 'react-private-route'
 
 // import the components needed
+import Login from '../components/forms/Login'
+import App from '../App'
 
 const AppRouter = () => (
   <Router history={AppHistory}>
     <div>
-      <Switch />
+      <Switch>
+        <Route path='/' component={App} />
+      </Switch>
     </div>
   </Router>
 )

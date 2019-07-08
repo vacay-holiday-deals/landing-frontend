@@ -63,7 +63,6 @@ function Landing() {
             </div>
           </Container>
         </section>
-        <section className='landing--blank' />
       </div>
     </div>
   )

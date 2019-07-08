@@ -1,0 +1,50 @@
+.offers-container {
+  height: auto;
+  width: 80%;
+  margin: 0 10%;
+  position: relative;
+
+  & > .offer-card {
+    display: flex !important;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    width: 80%;
+    margin: 5rem 10%;
+
+    & > .content {
+    }
+    & > .icons {
+      & > span {
+        font-family: var(--primary-font), sans-serif;
+        margin-left: 2rem;
+        font-weight: 400;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        & > .icon {
+          font-size: 1rem;
+        }
+        & > .name {
+          margin-left: 5px;
+        }
+      }
+      & > .edit {
+        color: var(--primary-color);
+
+        &:hover {
+          background: lighten(#0068b3, 60%);
+        }
+      }
+      & > .delete {
+        color: var(--red);
+
+        &:hover {
+          background: lighten(#de3c35, 40%);
+        }
+      }
+    }
+  }
+}

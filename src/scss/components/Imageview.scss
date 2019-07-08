@@ -1,0 +1,13 @@
+.carousel--main {
+  height: 100%;
+  width: 100%;
+  &-item {
+    height: 72vh;
+    max-width: 100vw;
+    object-fit: contain;
+  }
+  &-img {
+    height: 100%;
+    width: 100%;
+  }
+}
