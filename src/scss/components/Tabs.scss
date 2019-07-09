@@ -54,7 +54,8 @@
 
     & > p {
       line-height: 1.7rem;
-      font-size: 0.93rem;
+      font-size: 0.9rem;
+      padding: 5px;
     }
   }
 }
@@ -88,6 +89,12 @@
       width: 100%;
       overflow: auto;
       font-size: 0.9rem;
+
+      & > p {
+        line-height: 1.7rem;
+        font-size: 0.87rem;
+        padding: 5px;
+      }
     }
   }
 }

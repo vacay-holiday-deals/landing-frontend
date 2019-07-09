@@ -15,8 +15,10 @@ function ImageView(props) {
             <LazyLoadImage
               src={image}
               alt='imags'
+              effect
               className='carousel--main-img'
-              effect='black and white'
+              delayMethod='debounce'
+              delayTime={4000}
             />
           </Carousel.Item>
         )
