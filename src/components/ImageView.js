@@ -12,14 +12,7 @@ function ImageView(props) {
       {images.map(image => {
         return (
           <Carousel.Item key={uuid.v4()} className='carousel--main-item'>
-            <LazyLoadImage
-              src={image}
-              alt='imags'
-              effect
-              className='carousel--main-img'
-              delayMethod='debounce'
-              delayTime={4000}
-            />
+            <img src={image} alt='imgs' className='carousel--main-img' />
           </Carousel.Item>
         )
       })}

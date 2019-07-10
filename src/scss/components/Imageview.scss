@@ -1,14 +1,18 @@
 .carousel--main {
   height: 100%;
   width: 100%;
-  &-item {
-    max-height: 72vh;
-    max-width: 100vw;
-    object-fit: contain;
-  }
-  &-img {
+  .carousel--main {
     height: 100%;
     width: 100%;
+    &-item {
+      height: 75vh;
+      width: 100vw;
+      object-fit: contain;
+    }
+    &-img {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 
