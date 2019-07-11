@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
 
   &--contact {
     color: var(--light-color);
@@ -61,18 +62,6 @@
   }
 }
 
-// Portrait mode (tablet)
-@media only screen and (min-device-width: 700px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .top-bar {
-    .icon {
-      font-size: 0.9rem;
-    }
-    span.contact-links {
-      font-size: 0.5rem;
-    }
-  }
-}
-
 @media only screen and (min-width: 700px) and (max-width: 1024px) {
   .top-bar {
     span.contact-links {
@@ -83,8 +72,4 @@
       font-size: 0.9rem;
     }
   }
-}
-
-// Landscape mode (phone)
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 }

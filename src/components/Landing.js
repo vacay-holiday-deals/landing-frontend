@@ -5,6 +5,7 @@ import Form from './forms/Forms'
 import Tabs from './tabs/Tabs'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
+import parser from 'html-react-parser'
 
 function Landing() {
   const [offer, setOffer] = useState([])
@@ -22,7 +23,23 @@ function Landing() {
       })
   }, [])
 
-  const { title, overview, itinerary, inclusion, price, addinfo } = offer
+  const {
+    title,
+    overview,
+    itinerary,
+    inclusion,
+    price,
+    addinfo,
+    images
+  } = offer
+
+  const changeToString = value => {
+    const val = String(value)
+      .split('"')
+      .join('')
+
+    return parser(val)
+  }
 
   return (
     <div className='landing'>
@@ -39,27 +56,21 @@ function Landing() {
           <Container fluid={true} className='landing--info-container'>
             <div className='landing--info-tabs'>
               <Tabs>
-                <div label='Overview'>
-                  <p>{overview}</p>
-                </div>
-                <div label='Itinerary'>
-                  <p>{itinerary}</p>
-                </div>
+                <div label='Overview'>{changeToString(overview)}</div>
+                <div label='Itinerary'>{changeToString(itinerary)}</div>
                 <div label='Inclusions & Exclusions'>
-                  <p>{inclusion}</p>
+                  {changeToString(inclusion)}
                 </div>
-                <div label='Price'>
-                  <p>{price}</p>
-                </div>
+                <div label='Price'>{changeToString(price)}</div>
               </Tabs>
               <div className='more--info'>
-                <h4>Additional Information</h4>
-                <p>{addinfo}</p>
+                <h5>Additional Information</h5>
+                {changeToString(addinfo)}
               </div>
             </div>
             <div className='landing--info-form'>
-              <Sharebar />
-              <Form />
+              <Sharebar props={title} />
+              <Form props={title} />
             </div>
           </Container>
         </section>

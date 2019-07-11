@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
-import axios from 'axios'
 
-function OfferForm() {
+
+function OfferForm(props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('')
@@ -17,22 +17,7 @@ function OfferForm() {
   const [budget, setBudget] = useState('')
   const [info, setInfo] = useState('')
 
-  const [offer, setOffers] = useState([])
-
-  useEffect(() => {
-    axios
-      .get(`https://vacayapi.herokuapp.com/api/getOffer`)
-      .then(res => {
-        // setOffer to the last offer in the array
-        const offers = res.data.slice(-1)[0]
-        setOffers(offers)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
-
-  const { title } = offer
+  const { title } = props
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -49,18 +34,32 @@ function OfferForm() {
       Info: info
     }
 
-    axios
-      .post('https://vacayapi.herokuapp.com/api/uploadDetail', details, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+    fetch('http://localhost:5000/uploadDetail', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(details),
+      mode: 'cors'
+    })
       .then(res => {
-        console.log(res)
+        return res.json()
       })
+      .then(res => console.log(res))
       .catch(error => {
-        console.log(error)
+        return error
       })
+
+    setName('')
+    setEmail('')
+    setAdult('')
+    setBudget('')
+    setDeparture('')
+    setChildren('')
+    setNationality('Kenya')
+    setInfo('')
+    setNumber('')
   }
 
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ImageView from './ImageView'
 
-function Slider() {
+function Slider(props) {
   const [offer, setOffer] = useState([])
 
   useEffect(() => {
@@ -14,11 +14,7 @@ function Slider() {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(offer)
-
   const { images } = offer
-  console.log(images)
-
   return (
     <div className='carousel--container'>
       <ImageView images={images} />

@@ -46,17 +46,14 @@
   }
 
   &--content {
-    padding: 20px;
+    padding: 20px 30px;
     margin: 0;
     height: auto;
     width: 80%;
     overflow: auto;
-
-    & > p {
-      line-height: 1.7rem;
-      font-size: 0.9rem;
-      padding: 5px;
-    }
+    line-height: 1.9rem;
+    font-size: 0.95rem;
+    padding: 10px;
   }
 }
 
