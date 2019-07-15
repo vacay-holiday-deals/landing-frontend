@@ -3,14 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import Navbar from 'react-bootstrap/Navbar'
 
-function Share(props) {
+function Share({ title }) {
   const url = window.location.href
   const [counterFacebook, setCounterFacebook] = useState(0)
   const [counterInstagram, setCounterInstagram] = useState(0)
   const [counterWhatsapp, setCounterWhatsapp] = useState(0)
   const [counterTwitter, setCounterTwitter] = useState(0)
-
-  const { title } = props
 
   return (
     <div className='share'>

@@ -57,12 +57,18 @@ function Landing() {
                 <div label='Price'>{changeToString(price)}</div>
               </Tabs>
               <div className='more--info'>
-                <h5>Additional Information</h5>
-                {changeToString(addinfo)}
+                {addinfo === '' ? (
+                  <p />
+                ) : (
+                  <div>
+                    <h5>Additional Information</h5>
+                    {changeToString(addinfo)}
+                  </div>
+                )}
               </div>
             </div>
             <div className='landing--info-form'>
-              <Sharebar props={title} />
+              <Sharebar title={title} />
               <Form title={title} />
             </div>
           </Container>
