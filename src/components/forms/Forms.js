@@ -5,8 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 
-
-function OfferForm(props) {
+function OfferForm({ title }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('')
@@ -17,7 +16,6 @@ function OfferForm(props) {
   const [budget, setBudget] = useState('')
   const [info, setInfo] = useState('')
 
-  const { title } = props
 
   const handleSubmit = e => {
     e.preventDefault()

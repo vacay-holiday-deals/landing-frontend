@@ -12,26 +12,19 @@ function Landing() {
 
   useEffect(() => {
     axios
-      .get('https://vacayapi.herokuapp.com/api/getoffer')
+      .get('http://vacayapi.herokuapp.com/api/getoffer')
       .then(res => {
         // setOffer to the last offer in the array
         const offers = res.data.slice(-1)[0]
         setOffer(offers)
+        return { response: res.data }
       })
       .catch(error => {
-        console.log(error)
+        return { Message: error }
       })
   }, [])
 
-  const {
-    title,
-    overview,
-    itinerary,
-    inclusion,
-    price,
-    addinfo,
-    images
-  } = offer
+  const { title, overview, itinerary, inclusion, price, addinfo } = offer
 
   const changeToString = value => {
     const val = String(value)
@@ -70,7 +63,7 @@ function Landing() {
             </div>
             <div className='landing--info-form'>
               <Sharebar props={title} />
-              <Form props={title} />
+              <Form title={title} />
             </div>
           </Container>
         </section>
