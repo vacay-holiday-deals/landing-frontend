@@ -1,14 +1,14 @@
 .carousel--main {
   height: 100%;
-  width: 100vw;
+  width: 70vw;
   overflow: hidden;
   .carousel--main {
     height: 100%;
     width: 100%;
     &-item {
       height: 75vh;
-      max-width: 100%;
-      object-fit: cover;
+      width: 100%;
+      object-fit: contain;
     }
     &-img {
       height: 100%;
@@ -19,8 +19,16 @@
 
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .carousel--main {
+    max-width: 100vh;
+    width: 100%;
     &-item {
-      height: 40vh;
+      height: 70vh;
+      width: 100%;
+      object-fit: contain;
+    }
+    &-img {
+      height: 100%;
+      width: 100%;
     }
   }
 }

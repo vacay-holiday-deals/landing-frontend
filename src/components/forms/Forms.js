@@ -4,21 +4,30 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
+import Loader from 'react-loader-spinner'
 
 function OfferForm({ title }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [nationality, setNationality] = useState('')
+  const [nationality, setNationality] = useState('Kenya')
   const [number, setNumber] = useState('')
   const [departure, setDeparture] = useState('')
   const [adult, setAdult] = useState('')
   const [children, setChildren] = useState('')
   const [budget, setBudget] = useState('')
   const [info, setInfo] = useState('')
-
+  const [isLoading, setIsLoading] = useState(false)
+  const [res, setRes] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    setIsLoading(true)
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 100)
+
     const details = {
       Package: title,
       Name: name,
@@ -44,7 +53,10 @@ function OfferForm({ title }) {
       .then(res => {
         return res.json()
       })
-      .then(res => console.log(res))
+      .then(res => {
+        setRes(res)
+        console.log(res)
+      })
       .catch(error => {
         return error
       })
@@ -63,7 +75,7 @@ function OfferForm({ title }) {
   return (
     <Container className='Form--container'>
       <h5>Send us your details</h5>
-      <Form action='' method='get' onSubmit={handleSubmit}>
+      <Form action='' method='post'>
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>
 
@@ -76,6 +88,7 @@ function OfferForm({ title }) {
               setName(e.target.value)
             }}
             value={name}
+            required={true}
           />
         </Form.Group>
 
@@ -87,8 +100,16 @@ function OfferForm({ title }) {
             placeholder='email'
             className='form--control'
             name='email'
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => {
+              if (e.target.value !== null && e.target.value !== '') {
+                setEmail(e.target.value)
+              } else {
+                const error = 'please enter an email'
+                return <p>{error}</p>
+              }
+            }}
             value={email}
+            required={true}
           />
         </Form.Group>
         <Row>
@@ -102,8 +123,9 @@ function OfferForm({ title }) {
                 onChange={e => {
                   setNationality(e.target.value)
                 }}
-                value={nationality}>
-                <option>Kenya</option>
+                value={nationality}
+                required={true}>
+                <option value='Kenya'>Kenya</option>
                 {Country.allCountries.map((name, key) => (
                   <option key={name.iso2}>{name.name}</option>
                 ))}
@@ -124,6 +146,7 @@ function OfferForm({ title }) {
                   setNumber(e.target.value)
                 }}
                 value={number}
+                required
               />
             </Form.Group>
           </Col>
@@ -140,6 +163,7 @@ function OfferForm({ title }) {
               setDeparture(e.target.value)
             }}
             value={departure}
+            required
           />
         </Form.Group>
         <Row>
@@ -155,6 +179,7 @@ function OfferForm({ title }) {
                   setAdult(e.target.value)
                 }}
                 value={adult}
+                required
               />
             </Form.Group>
           </Col>
@@ -170,6 +195,7 @@ function OfferForm({ title }) {
                   setChildren(e.target.value)
                 }}
                 value={children}
+                required
               />
             </Form.Group>
           </Col>
@@ -184,6 +210,7 @@ function OfferForm({ title }) {
             onChange={e => {
               setBudget(e.target.value)
             }}
+            required
             value={budget}>
             <option className='choose'>3 star</option>
             <option>4 star</option>
@@ -211,8 +238,16 @@ function OfferForm({ title }) {
           type='submit'
           size='lg'
           block
+          onClick={handleSubmit}
           className='form--btn'>
-          Submit
+          {isLoading && (
+            <div className='loading'>
+              <Loader type='ThreeDots' color='#fff' height={30} width={30} />
+              <span className='ml-3'> sending</span>
+            </div>
+          )}
+
+          {!isLoading && <span>Submit</span>}
         </Button>
       </Form>
     </Container>

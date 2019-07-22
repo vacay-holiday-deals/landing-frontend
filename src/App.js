@@ -1,19 +1,19 @@
 import React from 'react'
 import './App.scss'
-import Landing from './components/Landing'
 import Call from './components/Call'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import AllOffers from './components/allOffers'
 
 function App() {
-  // show the loader before the div app is loade
+  // show the loader before the div app is loader
 
   return (
     //if not loading render the div app
     <div className='App'>
       <Call />
       <Header />
-      <Landing />
+      <AllOffers />
       <Footer />
     </div>
   )

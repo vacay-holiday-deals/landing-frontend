@@ -6,25 +6,48 @@ import Tabs from './tabs/Tabs'
 import Container from 'react-bootstrap/Container'
 import axios from 'axios'
 import parser from 'html-react-parser'
+import Call from './Call'
+import Footer from './Footer'
+import Header from './Header'
+import Loader from 'react-loader-spinner'
 
-function Landing() {
+function Landing(props) {
   const [offer, setOffer] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
+    let isMounted = false
+    const { title } = props.match.params
     axios
-      .get('https://vacayapi.herokuapp.com/api/getoffer')
+      .get(`http://vacayapi.herokuapp.com/api/getoffer/${title}`)
       .then(res => {
         // setOffer to the last offer in the array
-        const offers = res.data.slice(-1)[0]
+        setTimeout(() => {
+          setLoaded(true)
+        }, 500)
+
+        const offers = res.data
         setOffer(offers)
         return { response: res.data }
       })
       .catch(error => {
+        setLoaded(true)
         return { Message: error }
       })
-  }, [])
+    return () => {
+      isMounted = true
+    }
+  }, [props.match.params, setLoaded])
 
-  const { title, overview, itinerary, inclusion, price, addinfo } = offer
+  const {
+    title,
+    overview,
+    itinerary,
+    inclusion,
+    price,
+    addinfo,
+    images
+  } = offer
 
   const changeToString = value => {
     const val = String(value)
@@ -35,45 +58,58 @@ function Landing() {
   }
 
   return (
-    <div className='landing'>
-      <div className='landing--container'>
-        <section className='landing--carousel'>
-          <div className='carousel--container'>
-            <div className='carousel--heading'>
-              <h4 className='title'>{title}</h4>
-            </div>
-            <Carousel />
-          </div>
-        </section>
-        <section className='landing--info'>
-          <Container fluid={true} className='landing--info-container'>
-            <div className='landing--info-tabs'>
-              <Tabs>
-                <div label='Overview'>{changeToString(overview)}</div>
-                <div label='Itinerary'>{changeToString(itinerary)}</div>
-                <div label='Inclusions & Exclusions'>
-                  {changeToString(inclusion)}
-                </div>
-                <div label='Price'>{changeToString(price)}</div>
-              </Tabs>
-              <div className='more--info'>
-                {addinfo === '' ? (
-                  <p />
-                ) : (
-                  <div>
-                    <h5>Additional Information</h5>
-                    {changeToString(addinfo)}
+    <div className='App'>
+      {!loaded ? (
+        <div className='loader'>
+          <Loader type='Bars' color='#0068b3' height={150} width={150} />
+        </div>
+      ) : (
+        <div className='App'>
+          <Call />
+          <Header />
+          <div className='landing'>
+            <div className='landing--container'>
+              <section className='landing--carousel'>
+                <div className='carousel--container'>
+                  <div className='carousel--heading'>
+                    <h4 className='title'>{title}</h4>
                   </div>
-                )}
-              </div>
+                  <Carousel images={images} />
+                </div>
+              </section>
+              <section className='landing--info'>
+                <Container fluid={true} className='landing--info-container'>
+                  <div className='landing--info-tabs'>
+                    <Tabs>
+                      <div label='Overview'>{changeToString(overview)}</div>
+                      <div label='Itinerary'>{changeToString(itinerary)}</div>
+                      <div label='Inclusions & Exclusions'>
+                        {changeToString(inclusion)}
+                      </div>
+                      <div label='Price'>{changeToString(price)}</div>
+                    </Tabs>
+                    <div className='more--info'>
+                      {addinfo === '' ? (
+                        <p />
+                      ) : (
+                        <div>
+                          <h5>Additional Information</h5>
+                          {changeToString(addinfo)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className='landing--info-form'>
+                    <Sharebar title={title} />
+                    <Form title={title} />
+                  </div>
+                </Container>
+              </section>
             </div>
-            <div className='landing--info-form'>
-              <Sharebar title={title} />
-              <Form title={title} />
-            </div>
-          </Container>
-        </section>
-      </div>
+          </div>
+          <Footer />
+        </div>
+      )}
     </div>
   )
 }

@@ -15,7 +15,7 @@ function Share({ title }) {
       <h5>Tell a friend</h5>
       <Navbar className='nav--appbar'>
         <a
-          href={`http://instagram.com/sharer.php?u=${url}%${title}`}
+          href={`http://instagram.com/sharer.php?u=${url}%`}
           className='instagram'
           rel='noopener noreferrer'
           target='_blank'
@@ -28,7 +28,7 @@ function Share({ title }) {
           instagram
         </a>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${url}%${title}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${url}%`}
           className='facebook'
           target='_blank'
           rel='noopener noreferrer'
@@ -41,7 +41,7 @@ function Share({ title }) {
           facebook
         </a>
         <a
-          href={`http://twitter.com/share?url=${url}%${title}&hashtags=#vacayholidaydeals`}
+          href={`http://twitter.com/share?url=${url}%&hashtags=#vacayholidaydeals`}
           className='twitter'
           rel='noopener noreferrer'
           target='_blank'
@@ -54,7 +54,7 @@ function Share({ title }) {
           twitter
         </a>
         <a
-          href={`whatsapp://send?text=${url}%${title}`}
+          href={`whatsapp://send?text=${url}`}
           className='whatsapp'
           rel='noopener noreferrer'
           target='_blank'
