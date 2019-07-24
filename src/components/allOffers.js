@@ -72,7 +72,7 @@ function AllOffers() {
               <div className='loader'>
                 <span>
                   <span className='ml-15'>&#9785;</span> <br />
-                  No offers available
+                  <strong>No offers available</strong>
                 </span>
               </div>
             )}
