@@ -86,6 +86,10 @@ option::placeholder {
     &::placeholder {
       font-size: 0.7rem;
     }
+    & .selected {
+      font-size: 0.8rem;
+      color:blue;
+    }
   }
   .textarea {
     min-height: 7rem;
@@ -99,4 +103,9 @@ option::placeholder {
     font-weight: 500;
     font-size: 0.9rem;
   }
+
+  .selected {
+      font-size: 0.8rem;
+      color:blue;
+    }
 }
