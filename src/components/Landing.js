@@ -19,7 +19,7 @@ function Landing(props) {
     let isMounted = false
     const { title } = props.match.params
     axios
-      .get(`http://vacayapi.herokuapp.com/api/getoffer/${title}`)
+      .get(`http://209.97.159.239:5000/api/getoffer/${title}`)
       .then(res => {
         // setOffer to the last offer in the array
         setTimeout(() => {
@@ -49,6 +49,7 @@ function Landing(props) {
     images
   } = offer
 
+  // function to change value to string and parse it as html value
   const changeToString = value => {
     const val = String(value)
       .split('"')

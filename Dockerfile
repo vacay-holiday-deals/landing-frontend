@@ -1,16 +1,20 @@
 # base image
-FROM node:12.2.0-alpine
+FROM node:latest
 
 # set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+# copy all to folder
+COPY . /app
 
-# install and cache app dependencies
-COPY package.json /app/package.json
+# run npm install
 RUN npm install --silent
-RUN npm install react-scripts@3.0.1 -g --silent
+
+#run npm build to build folder
+RUN npm run build
+
+# install server module
+RUN npm i -g serve
 
 # start app
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build"]
