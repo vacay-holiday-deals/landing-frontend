@@ -26,25 +26,6 @@
       height: 75vh;
       width: 100%;
       position: relative;
-
-      & > .carousel--heading {
-        position: absolute;
-        z-index: 10;
-        top: 80%;
-        left: 0;
-        background: var(--dark-color);
-        height: auto;
-        width: 40vw;
-        padding: 10px;
-        opacity: 0.8;
-        border-radius: 3px;
-
-        & > .title {
-          font-size: 1.4rem;
-          opacity: 1;
-          color: var(--light-color);
-        }
-      }
     }
   }
   &--info {
@@ -70,19 +51,36 @@
       flex-direction: column;
       justify-content: flex-start;
       width: 55vw;
-      align-items: center;
+      align-items: flex-start;
       height: auto;
+      overflow: auto;
       padding: 0;
 
+      & .info--title {
+        padding: 10px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 1rem 0;
+        text-transform: uppercase;
+        color: var(--dark-color);
+      }
       & > .more--info {
         width: 100%;
         height: auto;
+        max-height: 50vh;
         padding: 20px 20px;
-        background: transparent;
+        margin-top: -10rem;
+        overflow: auto;
+        line-height: 2;
+        font-size: 0.9rem;
 
-        & > p {
-          line-height: 1.7;
-          font-size: 0.85rem;
+        &::-webkit-scrollbar {
+          width: 0.6rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--primary-grey);
+          border-radius: 5px;
         }
       }
     }
@@ -136,12 +134,21 @@
 
       &-tabs {
         width: 100vw;
+        max-height: 100vh;
+
+        & .info--title {
+          margin: 10px 1rem;
+          font-size: 1.2rem;
+        }
 
         & > .more--info {
           padding: 10px 20px;
+          margin: 2rem 0;
 
           h4 {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            font-family: var(--primary-font);
+            font-weight: 600;
           }
           p {
             font-size: 0.8rem;
