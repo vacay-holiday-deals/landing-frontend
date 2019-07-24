@@ -13,11 +13,11 @@ function AllOffers() {
     let isMounted = true
 
     axios
-      .get('http://vacayapi.herokuapp.com/api/getoffer')
+      .get('http://209.97.159.239:5000/api/getoffer')
       .then(res => {
         setTimeout(() => {
           setLoaded(true)
-        }, 300)
+        }, 200)
         setOffers(res.data)
       })
       .catch(error => {

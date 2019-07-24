@@ -19,7 +19,7 @@ function Landing(props) {
     let isMounted = false
     const { title } = props.match.params
     axios
-      .get(`http://vacayapi.herokuapp.com/api/getoffer/${title}`)
+      .get(`http://209.97.159.239:5000/api/getoffer/${title}`)
       .then(res => {
         // setOffer to the last offer in the array
         setTimeout(() => {
@@ -49,6 +49,7 @@ function Landing(props) {
     images
   } = offer
 
+  // function to change value to string and parse it as html value
   const changeToString = value => {
     const val = String(value)
       .split('"')
@@ -71,15 +72,13 @@ function Landing(props) {
             <div className='landing--container'>
               <section className='landing--carousel'>
                 <div className='carousel--container'>
-                  <div className='carousel--heading'>
-                    <h4 className='title'>{title}</h4>
-                  </div>
                   <Carousel images={images} />
                 </div>
               </section>
               <section className='landing--info'>
                 <Container fluid={true} className='landing--info-container'>
                   <div className='landing--info-tabs'>
+                    <h4 className='info--title'>{title}</h4>
                     <Tabs>
                       <div label='Overview'>{changeToString(overview)}</div>
                       <div label='Itinerary'>{changeToString(itinerary)}</div>

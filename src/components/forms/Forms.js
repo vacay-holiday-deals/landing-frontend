@@ -17,7 +17,6 @@ function OfferForm({ title }) {
   const [budget, setBudget] = useState('')
   const [info, setInfo] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [res, setRes] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -54,7 +53,6 @@ function OfferForm({ title }) {
         return res.json()
       })
       .then(res => {
-        setRes(res)
         console.log(res)
       })
       .catch(error => {
