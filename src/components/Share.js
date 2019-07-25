@@ -5,8 +5,6 @@ import Navbar from 'react-bootstrap/Navbar'
 
 function Share({ title }) {
   const url = window.location.href
-  const newUrl = encodeURIComponent(url)
-  console.log(url , newUrl)
   const [counterFacebook, setCounterFacebook] = useState(0)
   const [counterInstagram, setCounterInstagram] = useState(0)
   const [counterWhatsapp, setCounterWhatsapp] = useState(0)
@@ -17,7 +15,7 @@ function Share({ title }) {
       <h4 className='mt-3 ml-2'>Tell a friend</h4>
       <Navbar className='nav--appbar'>
         <a
-          href={`http://instagram.com/sharer.php?u=${newUrl}%`}
+          href={`http://instagram.com/sharer.php?u=${url}%`}
           className='instagram'
           rel='noopener noreferrer'
           target='_blank'
@@ -30,7 +28,7 @@ function Share({ title }) {
           instagram
         </a>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${newUrl}%`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${url}%`}
           className='facebook'
           target='_blank'
           rel='noopener noreferrer'
@@ -43,7 +41,7 @@ function Share({ title }) {
           facebook
         </a>
         <a
-          href={`http://twitter.com/share?url=${newUrl}`}
+          href={`http://twitter.com/share?url=${url}`}
           className='twitter'
           rel='noopener noreferrer'
           target='_blank'
@@ -56,7 +54,7 @@ function Share({ title }) {
           twitter
         </a>
         <a
-          href={`whatsapp://send?text=${newUrl}`}
+          href={`whatsapp://send?text=${url}`}
           className='whatsapp'
           rel='noopener noreferrer'
           target='_blank'
