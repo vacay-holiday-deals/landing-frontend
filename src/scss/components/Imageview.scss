@@ -1,17 +1,19 @@
 .carousel--main {
   height: 100%;
-  width: 70vw;
+  width: 80vw;
+  margin: 0 10vw;
   overflow: hidden;
   .carousel--main {
     height: 100%;
     width: 100%;
     &-item {
-      height: 100%;
+      max-height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center;
     }
     &-img {
-      height: auto;
+      height: 100%;
       width: 100%;
     }
   }
@@ -19,19 +21,18 @@
 
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .carousel--main {
-    background: var(--dark-color);
-    width: 100%;
+    width: 100vw;
     height: 100%;
+    margin: 0;
     &-item {
-      max-height: 100%;
-      height: 100%;
+      height: 40vh;
       width: 100%;
-      object-fit: fill;
+      object-fit: contain;
+      object-position: center;
     }
     &-img {
       height: 100%;
       width: 100%;
-      background-repeat: initial;
     }
   }
 }

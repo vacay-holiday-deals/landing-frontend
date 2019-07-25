@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
+import { format } from 'date-fns'
 
 function AllOffers() {
   const [offers, setOffers] = useState([])
@@ -64,14 +65,17 @@ function AllOffers() {
                     <h6 className='ml-10'>
                       <Link to={`/${title}`}>{title}</Link>
                     </h6>
-                    <p className='ml-10'>{created}</p>
+                    <p className='ml-10'>{format(created, 'MMMM DD, YYYY')}</p>
                   </div>
                 )
               })
             ) : (
               <div className='loader'>
                 <span>
-                  <span className='ml-15'>&#9785;</span> <br />
+                  <span className='ml-15' style={{ textAlign: 'center' }}>
+                    &#9785;
+                  </span>
+                  <br />
                   <strong>No offers available</strong>
                 </span>
               </div>
