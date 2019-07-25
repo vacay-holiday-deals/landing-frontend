@@ -11,15 +11,55 @@ function OfferForm({ title }) {
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('Kenya')
   const [number, setNumber] = useState('')
-  const [departure, setDeparture] = useState('')
-  const [adult, setAdult] = useState('')
-  const [children, setChildren] = useState('')
-  const [budget, setBudget] = useState('')
+  const [departure, setDeparture] = useState(Date.now())
+  const [adult, setAdult] = useState(0)
+  const [children, setChildren] = useState(0)
+  const [budget, setBudget] = useState('3 Star')
   const [info, setInfo] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const errorMessage = value => {
+    setErrorMsg(value)
+    setTimeout(() => {
+      setErrorMsg('')
+    }, 5000)
+  }
+
+  let msge
+
+  const validate = () => {
+    if (!name && !email && !number) {
+      msge = 'Fields are required'
+      errorMessage(msge)
+      return false
+    } else if (!name) {
+      setTimeout(() => {}, 5000)
+      setErrorMsg('Name is required')
+      return false
+    } else if (!email) {
+      setTimeout(() => {}, 5000)
+      setErrorMsg('Email is required')
+      return false
+    } else if (!email.includes('@')) {
+      setTimeout(() => {}, 5000)
+      setErrorMsg('Enter a valid email')
+      return false
+    } else if (!number) {
+      setTimeout(() => {}, 5000)
+      setErrorMsg('Number is required')
+      return false
+    } else {
+      return true
+    }
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
+    const isValidated = validate()
+    if (!isValidated) {
+      return false
+    }
 
     setIsLoading(true)
 
@@ -62,7 +102,7 @@ function OfferForm({ title }) {
     setName('')
     setEmail('')
     setAdult('')
-    setBudget('')
+    setBudget('3 star')
     setDeparture('')
     setChildren('')
     setNationality('Kenya')
@@ -72,6 +112,8 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
+      <p style={{ color: 'red', fontSize:'1.2rem' }}>{errorMsg}</p>
+
       <h5>Send us your details</h5>
       <Form action='' method='post'>
         <Form.Group className='form--group'>
@@ -210,14 +252,16 @@ function OfferForm({ title }) {
             }}
             required
             value={budget}>
-            <option className='choose'>3 star</option>
+            <option>3 star</option>
             <option>4 star</option>
             <option>5 star</option>
           </Form.Control>
         </Form.Group>
 
         <Form.Group className='form--group'>
-          <Form.Label className='label'>Other details (optional)</Form.Label>
+          <Form.Label className='label'>
+            Additional details (optional)
+          </Form.Label>
 
           <Form.Control
             as='textarea'
