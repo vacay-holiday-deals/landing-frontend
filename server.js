@@ -21,7 +21,7 @@ app.enable('trust proxy')
 app.use(express.static(path.join(__dirname, 'build')))
 
 // setting the ports
-const port = process.env.PORT || '8080'
+const port = process.env.PORT || '80'
 app.set('port', port)
 
 // creating a http server

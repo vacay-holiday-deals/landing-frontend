@@ -44,6 +44,7 @@
     "eject": "react-scripts eject",
     "postinstall": "react-scripts build"
   },
+  "proxy": "http://offers.vacay.co.ke",
   "eslintConfig": {
     "extends": "react-app"
   },

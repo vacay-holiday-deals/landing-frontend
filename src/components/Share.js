@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 function Share({ title }) {
   const url = window.location.href
   const newUrl = encodeURIComponent(url)
+  console.log(url , newUrl)
   const [counterFacebook, setCounterFacebook] = useState(0)
   const [counterInstagram, setCounterInstagram] = useState(0)
   const [counterWhatsapp, setCounterWhatsapp] = useState(0)
@@ -20,7 +21,6 @@ function Share({ title }) {
           className='instagram'
           rel='noopener noreferrer'
           target='_blank'
-          onMouseOver=''
           onClick={e => {
             setCounterInstagram(counterInstagram + 1)
           }}>
