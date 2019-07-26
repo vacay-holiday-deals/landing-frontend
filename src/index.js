@@ -6,6 +6,7 @@ import './index.scss'
 import App from './App'
 import NotFound from './components/NotFound'
 import Landing from './components/Landing'
+import * as serviceWorker from './serviceWorker'
 
 const AppRouter = () => (
   <Router history={Apphistory}>
@@ -22,3 +23,4 @@ const AppRouter = () => (
 )
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'))
+serviceWorker.unregister()
