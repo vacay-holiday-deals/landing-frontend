@@ -99,7 +99,7 @@ function Landing(props) {
                     </div>
                   </div>
                   <div className='landing--info-form'>
-                    <Sharebar title={title} />
+                    <Sharebar title={title} image={images} />
                     <Form title={title} />
                   </div>
                 </Container>

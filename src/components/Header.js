@@ -7,7 +7,8 @@ function Header() {
         <img alt='logo' src='images/logo.png' />
       </div>
       <div className='header--button'>
-        <a href='https://vacay.co.ke/' className='btn stylebutton'>
+        <a href='https://vacay.co.ke/' className='btn stylebutton' rel='noopener noreferrer'
+          target='_blank'>
           More offers
         </a>
       </div>
