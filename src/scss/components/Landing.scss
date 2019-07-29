@@ -22,8 +22,7 @@
     height: 75vh;
     width: 100vw;
     border-bottom: 0.5px solid var(--secondary-grey);
-    background: var(--secondary--grey);
-
+    background: url('/images/svg/backdrop.svg');
     & > .carousel--container {
       height: 100%;
       width: auto;
