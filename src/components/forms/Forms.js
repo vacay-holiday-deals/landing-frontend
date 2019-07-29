@@ -112,9 +112,9 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
-      <p style={{ color: 'red', fontSize:'1.2rem' }}>{errorMsg}</p>
+      <p style={{ color: 'red', fontSize: '1.2rem' }}>{errorMsg}</p>
 
-      <h5>Send us your details</h5>
+      <h4>Get in Touch</h4>
       <Form action='' method='post'>
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>

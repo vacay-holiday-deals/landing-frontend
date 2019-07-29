@@ -97,15 +97,20 @@
     &--content {
       padding: 10px 20px;
       margin: 2rem 0;
-      height: 100%;
+      max-height: 55vh;
+      height: auto;
       width: 100%;
       overflow: auto;
       font-size: 0.9rem;
+      line-height: 1rem;
+      font-size: 0.87rem;
+      &::-webkit-scrollbar {
+        width: 0.4rem;
+      }
 
-      & > p {
-        line-height: 1rem;
-        font-size: 0.87rem;
-        padding: 5px;
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-grey);
+        border-radius: 5px;
       }
     }
   }

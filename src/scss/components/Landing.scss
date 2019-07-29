@@ -41,7 +41,6 @@
     background-repeat: no-repeat;
 
     &-container {
-      max-height: 170vh;
       height: auto;
       width: 100vw;
       padding: 20px;
@@ -54,10 +53,9 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 55vw;
+      width: 60vw;
       align-items: flex-start;
       height: auto;
-      overflow: auto;
       padding: 0;
 
       & .info--title {
@@ -73,7 +71,6 @@
         height: auto;
         max-height: 50vh;
         padding: 20px 20px;
-        margin-top: -10rem;
         overflow: auto;
         line-height: 2;
         font-size: 0.9rem;
@@ -127,13 +124,15 @@
         max-height: 100vh;
 
         & .info--title {
-          margin: 10px 1rem;
-          font-size: 1.2rem;
+          margin: 5px 1rem;
+          font-size: 1.4rem;
+          padding: 10px;
         }
 
         & > .more--info {
           padding: 10px 20px;
-          margin: 2rem 0;
+          margin: 1rem 0;
+          height: auto;
 
           h5 {
             font-size: 0.9rem;
