@@ -10,9 +10,8 @@ import { format } from 'date-fns'
 function AllOffers() {
   const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
+  var isMounted = true
   useEffect(() => {
-    let isMounted = true
-
     axios
       .get('http://offers.vacay.co.ke:5000/api/getoffer')
       .then(res => {

@@ -5,19 +5,25 @@ import Button from 'react-bootstrap/Button'
 import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
+import { format } from 'date-fns'
 
 function OfferForm({ title }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('Kenya')
   const [number, setNumber] = useState('')
-  const [departure, setDeparture] = useState(Date.now())
+  const [departure, setDeparture] = useState(
+    String(
+      format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
+    )
+  )
   const [adult, setAdult] = useState(0)
   const [children, setChildren] = useState(0)
   const [budget, setBudget] = useState('3 Star')
   const [info, setInfo] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isSending, setIsSending] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
+  const [successMsg, setSuccessMsg] = useState('')
 
   const errorMessage = value => {
     setErrorMsg(value)
@@ -34,20 +40,20 @@ function OfferForm({ title }) {
       errorMessage(msge)
       return false
     } else if (!name) {
-      setTimeout(() => {}, 5000)
-      setErrorMsg('Name is required')
+      msge = 'Name is required'
+      errorMessage(msge)
       return false
     } else if (!email) {
-      setTimeout(() => {}, 5000)
-      setErrorMsg('Email is required')
+      msge = 'Email is required'
+      errorMessage(msge)
       return false
     } else if (!email.includes('@')) {
-      setTimeout(() => {}, 5000)
-      setErrorMsg('Enter a valid email')
+      msge = 'Valid email required'
+      errorMessage(msge)
       return false
     } else if (!number) {
-      setTimeout(() => {}, 5000)
-      setErrorMsg('Number is required')
+      msge = 'Number is required'
+      errorMessage(msge)
       return false
     } else {
       return true
@@ -61,11 +67,11 @@ function OfferForm({ title }) {
       return false
     }
 
-    setIsLoading(true)
+    setIsSending(true)
 
     setTimeout(() => {
-      setIsLoading(false)
-    }, 100)
+      setIsSending(false)
+    }, 2000)
 
     const details = {
       Package: title,
@@ -80,7 +86,7 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    fetch('http://localhost:5000/uploadDetail', {
+    fetch('http://offers.vacay.co.ke:5000/uploadDetail', {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -93,7 +99,7 @@ function OfferForm({ title }) {
         return res.json()
       })
       .then(res => {
-        console.log(res)
+        setSuccessMsg(res.Message)
       })
       .catch(error => {
         return error
@@ -112,6 +118,7 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
+      <p style={{ color: 'green', fontSize: '1.2rem' }}>{successMsg}</p>
       <p style={{ color: 'red', fontSize: '1.2rem' }}>{errorMsg}</p>
 
       <h4>Get in Touch</h4>
@@ -282,14 +289,14 @@ function OfferForm({ title }) {
           block
           onClick={handleSubmit}
           className='form--btn'>
-          {isLoading && (
+          {isSending && (
             <div className='loading'>
               <Loader type='ThreeDots' color='#fff' height={30} width={30} />
               <span className='ml-3'> sending</span>
             </div>
           )}
 
-          {!isLoading && <span>Submit</span>}
+          {!isSending && <span>Submit</span>}
         </Button>
       </Form>
     </Container>
