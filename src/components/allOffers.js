@@ -14,7 +14,7 @@ function AllOffers() {
     let isMounted = true
 
     axios
-      .get('http://209.97.159.239:5000/api/getoffer')
+      .get('http://offers.vacay.co.ke:5000/api/getoffer')
       .then(res => {
         setTimeout(() => {
           setLoaded(true)
