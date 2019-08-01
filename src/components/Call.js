@@ -33,7 +33,9 @@ function Call() {
       <div className='top-bar--social'>
         <a
           href='https://www.instagram.com/vacayholidaydeals/?hl=en'
-          className='top-bar--social-links'>
+          className='top-bar--social-links'
+          rel='noopener noreferrer'
+          target='_blank'>
           <FontAwesomeIcon icon={faInstagram} className='icon' />
         </a>
 
@@ -52,7 +54,11 @@ function Call() {
           target='_blank'>
           <FontAwesomeIcon icon={faTwitter} className='icon' />
         </a>
-        <a href='https://wa.me/254716875656' className='top-bar--social-links'>
+        <a
+          href='https://wa.me/254716875656'
+          className='top-bar--social-links'
+          rel='noopener noreferrer'
+          target='_blank'>
           <FontAwesomeIcon icon={faWhatsapp} className='icon' />
         </a>
       </div>

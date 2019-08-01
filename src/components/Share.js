@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import Navbar from 'react-bootstrap/Navbar'
 
-function Share({ title, image }) {
+function Share({ title }) {
   const url = window.location.href
   const newUrl = encodeURIComponent(url)
 
@@ -12,17 +12,7 @@ function Share({ title, image }) {
       <h4 className='mt-3 ml-2'>Tell a friend</h4>
       <Navbar className='nav--appbar'>
         <a
-          href={`https://www.instagram.com/?url=${newUrl}%`}
-          className='instagram'
-          rel='noopener noreferrer'
-          target='_blank'>
-          <span className='fontawesomeicon'>
-            <FontAwesomeIcon icon={faShareAlt} className='icon' />
-          </span>
-          instagram
-        </a>
-        <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${newUrl}%`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${newUrl}`}
           className='facebook'
           target='_blank'
           rel='noopener noreferrer'>

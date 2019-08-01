@@ -19,7 +19,7 @@ function OfferForm({ title }) {
   )
   const [adult, setAdult] = useState(0)
   const [children, setChildren] = useState(0)
-  const [budget, setBudget] = useState('3 Star')
+  const [budget, setBudget] = useState('4 Star')
   const [info, setInfo] = useState('')
   const [isSending, setIsSending] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
@@ -86,7 +86,7 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    fetch('http://offers.vacay.co.ke:5000/uploadDetail', {
+    fetch('http://offers.vacay.co.ke:5000/api/uploadDetail', {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -108,7 +108,7 @@ function OfferForm({ title }) {
     setName('')
     setEmail('')
     setAdult('')
-    setBudget('3 star')
+    setBudget('4 star')
     setDeparture('')
     setChildren('')
     setNationality('Kenya')
@@ -118,7 +118,6 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
-      <p style={{ color: 'green', fontSize: '1.2rem' }}>{successMsg}</p>
       <p style={{ color: 'red', fontSize: '1.2rem' }}>{errorMsg}</p>
 
       <h4>Get in Touch</h4>
@@ -259,8 +258,8 @@ function OfferForm({ title }) {
             }}
             required
             value={budget}>
+            <option selected>4 star</option>
             <option>3 star</option>
-            <option>4 star</option>
             <option>5 star</option>
           </Form.Control>
         </Form.Group>
@@ -296,8 +295,11 @@ function OfferForm({ title }) {
             </div>
           )}
 
-          {!isSending && <span>Submit</span>}
+          {!isSending && <span>send</span>}
         </Button>
+        <p style={{ color: 'green', fontSize: '1.2rem' }} className='mt-2'>
+          {successMsg}
+        </p>
       </Form>
     </Container>
   )
