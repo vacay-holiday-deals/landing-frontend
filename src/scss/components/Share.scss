@@ -7,7 +7,7 @@
   & > .nav--appbar {
     padding: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.9rem;
 
     & > .whatsapp {
@@ -16,10 +16,6 @@
     }
     & > .facebook {
       background-color: var(--facebook-color);
-      color: var(--light-color);
-    }
-    & > .instagram {
-      background: linear-gradient(#736edbd2, #a86989d2, #f7854cd2);
       color: var(--light-color);
     }
     & > .twitter {
