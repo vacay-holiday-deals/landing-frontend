@@ -266,7 +266,7 @@ function OfferForm({ title }) {
 
         <Form.Group className='form--group'>
           <Form.Label className='label'>
-            Additional details (optional)
+            Additional details
           </Form.Label>
 
           <Form.Control
