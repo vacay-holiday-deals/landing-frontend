@@ -29,7 +29,6 @@ function AllOffers() {
     }
   }, [])
 
-  console.log(offers)
 
   const height = '100%'
   const width = '100%'
@@ -60,7 +59,6 @@ function AllOffers() {
               </div>
             ) : offers.length !== 0 ? (
               offers.map(offer => {
-                console.log(offer)
                 const { title, created } = offer
                 return (
                   <div className='card' key={uuid.v4()}>
