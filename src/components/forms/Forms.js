@@ -86,7 +86,7 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    fetch('http://offers.vacay.co.ke:5000/api/uploadDetail', {
+    fetch('/api/uploadDetail', {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -127,7 +127,7 @@ function OfferForm({ title }) {
 
           <Form.Control
             type='text'
-            placeholder='name'
+            placeholder='John Doe'
             className='form--control'
             name='name'
             onChange={e => {
@@ -143,7 +143,7 @@ function OfferForm({ title }) {
 
           <Form.Control
             type='email'
-            placeholder='email'
+            placeholder='jdoe@gmail.com'
             className='form--control'
             name='email'
             onChange={e => {
@@ -258,16 +258,14 @@ function OfferForm({ title }) {
             }}
             required
             value={budget}>
-            <option selected>4 star</option>
+            <option defaultValue>4 star</option>
             <option>3 star</option>
             <option>5 star</option>
           </Form.Control>
         </Form.Group>
 
         <Form.Group className='form--group'>
-          <Form.Label className='label'>
-            Additional details
-          </Form.Label>
+          <Form.Label className='label'>Additional details</Form.Label>
 
           <Form.Control
             as='textarea'
