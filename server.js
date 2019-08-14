@@ -17,8 +17,13 @@ app.use(cors())
 // creating a path to the build folder
 app.use(express.static(path.join(__dirname, 'build')))
 
+let port
 // setting the ports
-const port = process.env.PORT || '5500'
+if (process.env.NODE_ENV === 'production') {
+  port = process.env.PORT
+} else {
+  port = '5500'
+}
 app.set('port', port)
 
 // creating a http server

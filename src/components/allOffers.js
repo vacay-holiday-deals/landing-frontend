@@ -13,7 +13,7 @@ function AllOffers() {
   var isMounted = true
   useEffect(() => {
     axios
-      .get('http://offers.vacay.co.ke:5000/api/getoffer')
+      .get('/api/getoffer')
       .then(res => {
         setTimeout(() => {
           setLoaded(true)

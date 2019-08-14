@@ -13,7 +13,6 @@ const AppRouter = () => (
     <Switch>
       <Route exact path='/' component={App} />
       <Route
-        exact
         path='/:title'
         render={props => <Landing key={props.match.params.title} {...props} />}
       />
