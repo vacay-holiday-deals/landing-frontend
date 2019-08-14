@@ -19,7 +19,7 @@ function Landing(props) {
     let isMounted = false
     const { title } = props.match.params
     axios
-      .get(`http:offers.co.ke:5000/api/getoffer/${title}`)
+      .get(`http://offers.vacay.co.ke:5000/api/getoffer/${title}`)
       .then(res => {
         // setOffer to the last offer in the array
         setTimeout(() => {
