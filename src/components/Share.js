@@ -6,10 +6,6 @@ import Navbar from 'react-bootstrap/Navbar'
 function Share({ title }) {
   const url = window.location.href
   const newUrl = encodeURIComponent(url)
-  const foUrl = url.split('%20').join('-')
-
-  const formattedUrl = decodeURIComponent(newUrl)
-  console.log({ url, newUrl, foUrl, formattedUrl })
 
   return (
     <div className='share'>
@@ -36,7 +32,7 @@ function Share({ title }) {
           twitter
         </a>
         <a
-          href={`whatsapp://send?text=${foUrl}`}
+          href={`whatsapp://send?text=${newUrl}`}
           className='whatsapp'
           rel='noopener noreferrer'
           target='_blank'>
