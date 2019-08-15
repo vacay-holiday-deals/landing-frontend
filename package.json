@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "",
   "engines": {
     "node": "10.16.0",
     "npm": "6.9.0"
@@ -42,7 +43,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "react-scripts build",
-    "serve": "serve -s build"
+    "serve": "serve -s build",
+    "dev": "nodemon server"
   },
   "eslintConfig": {
     "extends": "react-app"

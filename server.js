@@ -3,6 +3,7 @@ const http = require('http')
 const helmet = require('helmet')
 const cors = require('cors')
 const path = require('path')
+require('dotenv').config()
 
 // instantiate and express app
 const app = express()
@@ -25,6 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   port = '5500'
 }
 app.set('port', port)
+console.log(process.env.PROXY)
 
 // creating a http server
 const server = http.createServer(app)

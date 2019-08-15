@@ -86,7 +86,7 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    fetch('/api/uploadDetail', {
+    fetch('http://offers.vacay.co.ke:5000/api/uploadDetail', {
       method: 'post',
       headers: {
         Accept: 'application/json',

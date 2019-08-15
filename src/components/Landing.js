@@ -16,7 +16,6 @@ function Landing(props) {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    let isMounted = false
     const { title } = props.match.params
     axios
       .get(`http://offers.vacay.co.ke:5000/api/getoffer/${title}`)
@@ -34,10 +33,8 @@ function Landing(props) {
         setLoaded(true)
         return { Message: error }
       })
-    return () => {
-      isMounted = true
-    }
-  }, [props.match.params, setLoaded])
+    // eslint-disable-next-line
+  }, [])
 
   const {
     title,

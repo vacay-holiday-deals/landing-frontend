@@ -7,7 +7,6 @@ import AllOffers from './components/allOffers'
 
 function App() {
   // show the loader before the div app is loader
-
   return (
     //if not loading render the div app
     <div className='App'>
