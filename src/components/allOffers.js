@@ -10,10 +10,9 @@ import { format } from 'date-fns'
 function AllOffers() {
   const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
-  var isMounted = true
   useEffect(() => {
     axios
-      .get('http://offers.vacay.co.ke:5000/api/getoffer')
+      .get(`http://offers.vacay.co.ke:5000/api/getoffer`)
       .then(res => {
         setTimeout(() => {
           setLoaded(true)
@@ -24,11 +23,8 @@ function AllOffers() {
         console.log(error)
         setLoaded(true)
       })
-    return () => {
-      isMounted = false
-    }
+    // eslint-disable-next-line
   }, [])
-
 
   const height = '100%'
   const width = '100%'
