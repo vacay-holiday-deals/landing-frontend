@@ -138,7 +138,7 @@
         max-height: 100vh;
 
         & .info--title {
-          margin: 5px 1rem;
+          margin: 0 1rem;
           font-size: 1.4rem;
           padding: 10px;
         }
@@ -147,7 +147,7 @@
           padding: 10px 20px;
           margin: 1rem 0;
           height: auto;
-          height: 100%;
+          width: 100%;
 
           h5 {
             font-size: 0.9rem;

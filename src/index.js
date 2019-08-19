@@ -13,10 +13,17 @@ const AppRouter = () => (
     <Switch>
       <Route exact path='/' component={App} />
       <Route
+        exact
         path='/:title'
-        render={props => <Landing key={props.match.params.title} {...props} />}
+        render={props =>
+          props.match.params.title ? (
+            <Landing key={props.match.params.title} {...props} />
+          ) : (
+            <NotFound />
+          )
+        }
       />
-      <Route exact path='*' component={NotFound} />
+      <Route path='*' component={NotFound} />
     </Switch>
   </Router>
 )

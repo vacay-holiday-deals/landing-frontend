@@ -6,6 +6,7 @@ import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
+import PropTypes from 'prop-types'
 
 function OfferForm({ title }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -316,4 +317,15 @@ function OfferForm({ title }) {
   )
 }
 
+OfferForm.propTypes = {
+  errorMessage: PropTypes.func,
+  validate: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+}
+
+OfferForm.defaultProps = {
+  errorMessage: () => {},
+  validate: () => {},
+  handleSubmit: () => {}
+}
 export default OfferForm
