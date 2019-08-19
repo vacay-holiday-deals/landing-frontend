@@ -2,13 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "",
   "engines": {
     "node": "10.16.0",
     "npm": "6.9.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
+    "@fortawesomontawesome-svg-core": "^1.2.18",
     "@fortawesome/free-brands-svg-icons": "^5.8.2",
     "@fortawesome/free-regular-svg-icons": "^5.8.2",
     "@fortawesome/free-solid-svg-icons": "^5.8.2",

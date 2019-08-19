@@ -5,6 +5,8 @@ import Navbar from 'react-bootstrap/Navbar'
 
 function Share({ title }) {
   const url = window.location.href
+
+  //const newurl = url.replace(/ /, '%20')
   const newUrl = encodeURIComponent(url)
 
   return (

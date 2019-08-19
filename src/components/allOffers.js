@@ -1,18 +1,22 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
-import uuid from 'uuid'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 
+require('dotenv').config()
+
 function AllOffers() {
+  const URL_PROXY = process.env.REACT_APP_PROXY_URL
+  const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
   const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   useEffect(() => {
     axios
-      .get(`http://offers.vacay.co.ke:5000/api/getoffer`)
+      .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer`)
       .then(res => {
         setTimeout(() => {
           setLoaded(true)
@@ -25,7 +29,6 @@ function AllOffers() {
       })
     // eslint-disable-next-line
   }, [])
-
   const height = '100%'
   const width = '100%'
 
@@ -55,9 +58,9 @@ function AllOffers() {
               </div>
             ) : offers.length !== 0 ? (
               offers.map(offer => {
-                const { title, created } = offer
+                const { id, title, created } = offer
                 return (
-                  <div className='card' key={uuid.v4()}>
+                  <div className='card' key={id}>
                     <h6 className='ml-10'>
                       <Link to={`/${title}`}>{title}</Link>
                     </h6>
