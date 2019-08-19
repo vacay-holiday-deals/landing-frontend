@@ -8,6 +8,9 @@ import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
 
 function OfferForm({ title }) {
+  const URL_PROXY = process.env.REACT_APP_PROXY_URL
+  const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('Kenya')
@@ -86,7 +89,9 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    fetch('http://offers.vacay.co.ke:5000/api/uploadDetail', {
+    console.log(details)
+
+    fetch(`${URL_PROXY}:${PORT_NUM}/api/uploadDetail`, {
       method: 'post',
       headers: {
         Accept: 'application/json',
@@ -118,9 +123,16 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
-      <p style={{ color: 'red', fontSize: '1.2rem' }}>{errorMsg}</p>
+      <p
+        style={{
+          color: 'white',
+          fontSize: '1.2rem',
+          background: '#e73846'
+        }}>
+        {errorMsg}
+      </p>
 
-      <h4>Get in Touch</h4>
+      <h4>Get in touch</h4>
       <Form action='' method='post'>
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>
@@ -147,12 +159,7 @@ function OfferForm({ title }) {
             className='form--control'
             name='email'
             onChange={e => {
-              if (e.target.value !== null && e.target.value !== '') {
-                setEmail(e.target.value)
-              } else {
-                const error = 'please enter an email'
-                return <p>{error}</p>
-              }
+              setEmail(e.target.value)
             }}
             value={email}
             required={true}
@@ -215,7 +222,9 @@ function OfferForm({ title }) {
         <Row>
           <Col>
             <Form.Group className='form--group'>
-              <Form.Label className='label'>Adults</Form.Label>
+              <Form.Label className='label'>
+                Adults (12 years and above)
+              </Form.Label>
 
               <Form.Control
                 type='Number'
@@ -231,7 +240,9 @@ function OfferForm({ title }) {
           </Col>
           <Col>
             <Form.Group className='form--group'>
-              <Form.Label className='label'>Children</Form.Label>
+              <Form.Label className='label'>
+                Children (12 years under)
+              </Form.Label>
 
               <Form.Control
                 type='Number'
@@ -293,9 +304,11 @@ function OfferForm({ title }) {
             </div>
           )}
 
-          {!isSending && <span>send</span>}
+          {!isSending && <span>Send</span>}
         </Button>
-        <p style={{ color: 'green', fontSize: '1.2rem' }} className='mt-2'>
+        <p
+          style={{ color: 'white', fontSize: '1.2rem', background: 'green' }}
+          className='mt-2'>
           {successMsg}
         </p>
       </Form>

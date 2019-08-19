@@ -12,13 +12,16 @@ import Header from './Header'
 import Loader from 'react-loader-spinner'
 
 function Landing(props) {
+  const URL_PROXY = process.env.REACT_APP_PROXY_URL
+  const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
   const [offer, setOffer] = useState([])
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     const { title } = props.match.params
     axios
-      .get(`http://offers.vacay.co.ke:5000/api/getoffer/${title}`)
+      .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer/${title}`)
       .then(res => {
         // setOffer to the last offer in the array
         setTimeout(() => {
@@ -68,6 +71,7 @@ function Landing(props) {
           <div className='landing'>
             <div className='landing--container'>
               <section className='landing--carousel'>
+                <img src={images[0]} alt='' className='background--image' />
                 <div className='carousel--container'>
                   <Carousel images={images} />
                 </div>

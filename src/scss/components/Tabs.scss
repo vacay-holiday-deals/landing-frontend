@@ -57,7 +57,7 @@
     overflow: auto;
     line-height: 1.9rem;
     font-size: 0.95rem;
-    padding: 10px;
+    text-align: justify;
 
     &::-webkit-scrollbar {
       width: 0.6rem;
@@ -66,6 +66,16 @@
     &::-webkit-scrollbar-thumb {
       background-color: var(--primary-grey);
       border-radius: 5px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: circle;
     }
   }
 }
@@ -111,6 +121,16 @@
       &::-webkit-scrollbar-thumb {
         background-color: var(--primary-grey);
         border-radius: 5px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      table {
+        padding: 10px;
+        border-color: #999;
       }
     }
   }
