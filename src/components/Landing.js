@@ -10,6 +10,7 @@ import Call from './Call'
 import Footer from './Footer'
 import Header from './Header'
 import Loader from 'react-loader-spinner'
+import PropTypes from 'prop-types'
 
 function Landing(props) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -114,4 +115,11 @@ function Landing(props) {
   )
 }
 
+Landing.propTypes = {
+  offers: PropTypes.array.isRequired
+}
+
+Landing.defaultProps = {
+  offers: []
+}
 export default Landing

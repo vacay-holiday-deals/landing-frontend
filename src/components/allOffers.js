@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
+import PropTypes from 'prop-types'
 
 require('dotenv').config()
 
@@ -84,6 +85,14 @@ function AllOffers() {
       </div>
     </Fragment>
   )
+}
+
+AllOffers.propTypes={
+  offers: PropTypes.array
+}
+
+AllOffers.defaultProps ={
+  offers:[]
 }
 
 export default AllOffers
