@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
+import { Event } from '../tracking/googleTracking'
+import { TrackEvent } from '../tracking/facebookTracking'
 import Tab from './Tab'
 
 function Tabs(props) {
@@ -8,7 +9,11 @@ function Tabs(props) {
 
   const [activeTab, setActiveTab] = useState(children[0].props.label)
 
-  const onClickTabItem = tab => setActiveTab(tab)
+  const onClickTabItem = tab => {
+    Event('Clicked on tab', 'clicked on tab', 'TAB_CLICKED')
+    TrackEvent('CLICKED TAB', 'TAB CLICKED')
+    setActiveTab(tab)
+  }
 
   return (
     <div className='tabs'>

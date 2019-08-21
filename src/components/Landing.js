@@ -11,6 +11,8 @@ import Footer from './Footer'
 import Header from './Header'
 import Loader from 'react-loader-spinner'
 import PropTypes from 'prop-types'
+import { PageView } from './tracking/googleTracking'
+import { TrackPageView } from './tracking/facebookTracking'
 
 function Landing(props) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -20,6 +22,8 @@ function Landing(props) {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
+    PageView()
+    TrackPageView()
     const { title } = props.match.params
     axios
       .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer/${title}`)
