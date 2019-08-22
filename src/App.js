@@ -1,18 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.scss'
 import Call from './components/Call'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import AllOffers from './components/allOffers'
-import reactga from 'react-ga'
+import { initGA, PageView } from './components/tracking/googleTracking'
+import {
+  initPixel,
+  TrackPageView
+} from './components/tracking/facebookTracking'
 require('dotenv').config()
 
 function App() {
-  reactga.initialize('UA-83869034-4')
-  reactga.pageview('/')
-  reactga.pageview('/:title')
+  const googleTrackingId = 'UA-83869034-4'
+  const pixelTrackingId = 175932129445300
+  // initialise analytics tracking
+  useEffect(() => {
+    try {
+      // google analytics tracking
+      initGA(googleTrackingId)
+      PageView()
 
-  // show the loader before the div app is loader
+      // facebook pixel tracking
+      initPixel(pixelTrackingId)
+      TrackPageView()
+    } catch (error) {
+      throw error
+    }
+  }, [])
   return (
     //if not loading render the div app
     <div className='App'>

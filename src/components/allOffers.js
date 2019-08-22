@@ -6,7 +6,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
-
+import { TrackEvent } from '../components/tracking/facebookTracking'
+import { Event } from '../components/tracking/googleTracking'
 require('dotenv').config()
 
 function AllOffers() {
@@ -63,7 +64,18 @@ function AllOffers() {
                 return (
                   <div className='card' key={id}>
                     <h6 className='ml-10'>
-                      <Link to={`/${title}`}>{title}</Link>
+                      <Link
+                        to={`/${title}`}
+                        onClick={() => {
+                          Event(
+                            'CLICKED ON OFFER',
+                            'Clicked on offer link',
+                            title
+                          )
+                          TrackEvent('Clicked on offer Link', title)
+                        }}>
+                        {title}
+                      </Link>
                     </h6>
                     <p className='ml-10'>{format(created, 'MMMM DD, YYYY')}</p>
                   </div>
@@ -87,12 +99,12 @@ function AllOffers() {
   )
 }
 
-AllOffers.propTypes={
+AllOffers.propTypes = {
   offers: PropTypes.array
 }
 
-AllOffers.defaultProps ={
-  offers:[]
+AllOffers.defaultProps = {
+  offers: []
 }
 
 export default AllOffers

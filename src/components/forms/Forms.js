@@ -7,6 +7,8 @@ import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
+import { TrackEvent } from '../tracking/facebookTracking'
+import { Event } from '../tracking/googleTracking'
 
 function OfferForm({ title }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -65,6 +67,11 @@ function OfferForm({ title }) {
   }
 
   const handleSubmit = e => {
+    // adding google analytics and facebook pixel analytics
+    // google
+    Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
+    TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
+
     e.preventDefault()
     const isValidated = validate()
     if (!isValidated) {
