@@ -19,12 +19,12 @@
   }
 
   &--carousel {
-    height: 75vh;
+    height: 80vh;
     width: 100vw;
     position: relative;
     & > .background--image {
       position: absolute;
-      height: 75vh;
+      height: 80vh;
       width: 100vw;
       filter: blur(10px);
       object-fit: cover;

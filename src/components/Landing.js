@@ -11,10 +11,13 @@ import Footer from './Footer'
 import Header from './Header'
 import Loader from 'react-loader-spinner'
 import PropTypes from 'prop-types'
-import { PageView } from './tracking/googleTracking'
-import { TrackPageView } from './tracking/facebookTracking'
+import { initGA, PageView } from './tracking/googleTracking'
+import { initPixel, TrackPageView } from './tracking/facebookTracking'
 
 function Landing(props) {
+  const googleTrackingId = 'UA-83869034-4'
+  const pixelTrackingId = 175932129445300
+
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
 
@@ -22,6 +25,8 @@ function Landing(props) {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
+    initGA(googleTrackingId)
+    initPixel(pixelTrackingId)
     PageView()
     TrackPageView()
     const { title } = props.match.params
@@ -105,7 +110,11 @@ function Landing(props) {
                     </div>
                   </div>
                   <div className='landing--info-form'>
-                    <Sharebar title={title} image={images} />
+                    <Sharebar
+                      title={title}
+                      image={images}
+                      overview={overview}
+                    />
                     <Form title={title} />
                   </div>
                 </Container>

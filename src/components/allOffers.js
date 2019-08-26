@@ -16,6 +16,7 @@ function AllOffers() {
 
   const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
+  const [value, setValue] = useState('')
   useEffect(() => {
     axios
       .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer`)
@@ -34,6 +35,10 @@ function AllOffers() {
   const height = '100%'
   const width = '100%'
 
+  let filteredOffers = offers.filter(offer => {
+    return offer.title.toLowerCase().indexOf(value.toLowerCase()) !== -1
+  })
+
   return (
     <Fragment>
       <div className='container-fluid landing--container'>
@@ -48,22 +53,45 @@ function AllOffers() {
           />
         </div>
 
-        <div className='page--content'>
+        <div className='search mt-2 mb-2'>
+          <input
+            type='text'
+            placeholder='start typing ...'
+            className='search--input'
+            value={value}
+            onChange={e => {
+              setValue(e.target.value)
+            }}
+          />
+        </div>
+
+        <div className='page--content mt-2'>
           <h4>
             All offers :{' '}
-            {!isLoaded ? <span>0</span> : <span>{offers.length}</span>}
+            {!isLoaded ? <span>0</span> : <span>{filteredOffers.length}</span>}
           </h4>
           <div className='content--container'>
             {!isLoaded ? (
               <div className='loader'>
                 <Loader type='Bars' color='#0068b3' height={70} width={80} />
               </div>
-            ) : offers.length !== 0 ? (
-              offers.map(offer => {
-                const { id, title, created } = offer
+            ) : filteredOffers.length !== 0 ? (
+              filteredOffers.map(offer => {
+                const { id, title, created, images } = offer
                 return (
                   <div className='card' key={id}>
-                    <h6 className='ml-10'>
+                    <div style={{ height: '20vh', width: '100%' }}>
+                      <img
+                        src={images[0]}
+                        alt=''
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: '3px'
+                        }}
+                      />
+                    </div>
+                    <h6 className='mt-3'>
                       <Link
                         to={`/${title}`}
                         onClick={() => {
@@ -74,7 +102,14 @@ function AllOffers() {
                           )
                           TrackEvent('Clicked on offer Link', title)
                         }}>
-                        {title}
+                        <span
+                          style={{
+                            color: '#000411',
+                            fontWeight: '600',
+                            marginTop: '5px'
+                          }}>
+                          {title}
+                        </span>
                       </Link>
                     </h6>
                     <p className='ml-10'>{format(created, 'MMMM DD, YYYY')}</p>
