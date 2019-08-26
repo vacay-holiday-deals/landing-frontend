@@ -1,20 +1,18 @@
 .carousel--main {
+  max-height: 80vh;
   height: 100%;
-  width: 80vw;
-  margin: 0 10vw;
-  overflow: hidden;
-  .carousel--main {
+  width: 75vw;
+  margin: 0 12.5vw;
+
+  &-item {
+    height: 80vh;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  &-img {
     height: 100%;
     width: 100%;
-    &-item {
-      height: 100%;
-      width: 100%;
-      object-position: center;
-    }
-    &-img {
-      height: 100%;
-      width: 100%;
-    }
   }
 }
 

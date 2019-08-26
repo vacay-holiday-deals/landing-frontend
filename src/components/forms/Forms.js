@@ -9,10 +9,13 @@ import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
+import { useAlert } from 'react-alert'
 
 function OfferForm({ title }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
+  const alert = useAlert()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -28,38 +31,29 @@ function OfferForm({ title }) {
   const [budget, setBudget] = useState('4 Star')
   const [info, setInfo] = useState('')
   const [isSending, setIsSending] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
-  const [successMsg, setSuccessMsg] = useState('')
-
-  const errorMessage = value => {
-    setErrorMsg(value)
-    setTimeout(() => {
-      setErrorMsg('')
-    }, 5000)
-  }
 
   let msge
 
   const validate = () => {
     if (!name && !email && !number) {
       msge = 'Fields are required'
-      errorMessage(msge)
+      alert.error(msge)
       return false
     } else if (!name) {
       msge = 'Name is required'
-      errorMessage(msge)
+      alert.error(msge)
       return false
     } else if (!email) {
       msge = 'Email is required'
-      errorMessage(msge)
+      alert.error(msge)
       return false
     } else if (!email.includes('@')) {
-      msge = 'Valid email required'
-      errorMessage(msge)
+      msge = 'Email is invalid'
+      alert.error(msge)
       return false
     } else if (!number) {
       msge = 'Number is required'
-      errorMessage(msge)
+      alert.error(msge)
       return false
     } else {
       return true
@@ -112,7 +106,7 @@ function OfferForm({ title }) {
         return res.json()
       })
       .then(res => {
-        setSuccessMsg(res.Message)
+        alert.success(res.Message)
       })
       .catch(error => {
         return error
@@ -131,15 +125,6 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
-      <p
-        style={{
-          color: 'white',
-          fontSize: '1.2rem',
-          background: '#e73846'
-        }}>
-        {errorMsg}
-      </p>
-
       <h4>Get in touch</h4>
       <Form action='' method='post'>
         <Form.Group className='form--group'>
@@ -198,7 +183,6 @@ function OfferForm({ title }) {
               <Form.Label className='label'>
                 Number (with country code)
               </Form.Label>
-
               <Form.Control
                 placeholder='+254'
                 type='number'
@@ -233,11 +217,11 @@ function OfferForm({ title }) {
               <Form.Label className='label'>
                 Adults (12 years and above)
               </Form.Label>
-
               <Form.Control
                 type='Number'
                 placeholder='adults'
                 className='form--control'
+                aria-describedby='inputGroupPrepend'
                 onChange={e => {
                   setAdult(e.target.value)
                 }}
@@ -314,11 +298,6 @@ function OfferForm({ title }) {
 
           {!isSending && <span>Send</span>}
         </Button>
-        <p
-          style={{ color: 'white', fontSize: '1.2rem', background: 'green' }}
-          className='mt-2'>
-          {successMsg}
-        </p>
       </Form>
     </Container>
   )

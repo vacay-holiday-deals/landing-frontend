@@ -1,14 +1,16 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faFacebook,
+  faWhatsapp,
+  faTwitter
+} from '@fortawesome/free-brands-svg-icons'
 import Navbar from 'react-bootstrap/Navbar'
 import { TrackEvent } from '../components/tracking/facebookTracking'
 import { Event } from '../components/tracking/googleTracking'
 
-function Share({ title }) {
+function Share({ title, image, overview }) {
   const url = window.location.href
-
-  //const newurl = url.replace(/ /, '%20')
   const newUrl = encodeURIComponent(url)
 
   return (
@@ -16,7 +18,7 @@ function Share({ title }) {
       <h4 className='mt-3 ml-2'>Tell a friend</h4>
       <Navbar className='nav--appbar'>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${newUrl}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}&quote=${title}`}
           className='facebook'
           target='_blank'
           onClick={() => {
@@ -25,12 +27,12 @@ function Share({ title }) {
           }}
           rel='noopener noreferrer'>
           <span className='fontawesomeicon'>
-            <FontAwesomeIcon icon={faShareAlt} className='icon' />
+            <FontAwesomeIcon icon={faFacebook} className='icon' />
           </span>
-          facebook
+          Facebook
         </a>
         <a
-          href={`http://twitter.com/share?url=${newUrl}`}
+          href={`http://twitter.com/share?url=${newUrl}&text=${title}&hashtags="vacayholidaydeals"`}
           className='twitter'
           rel='noopener noreferrer'
           onClick={() => {
@@ -39,12 +41,12 @@ function Share({ title }) {
           }}
           target='_blank'>
           <span className='fontawesomeicon'>
-            <FontAwesomeIcon icon={faShareAlt} className='icon' />
+            <FontAwesomeIcon icon={faTwitter} className='icon' />
           </span>
-          twitter
+          Twitter
         </a>
         <a
-          href={`whatsapp://send?text=${newUrl}`}
+          href={`whatsapp://send?text=${newUrl}${title}`}
           className='whatsapp'
           rel='noopener noreferrer'
           onClick={() => {
@@ -53,9 +55,9 @@ function Share({ title }) {
           }}
           target='_blank'>
           <span className='fontawesomeicon'>
-            <FontAwesomeIcon icon={faShareAlt} className='icon' />
+            <FontAwesomeIcon icon={faWhatsapp} className='icon' />
           </span>
-          whatsapp
+          Whatsapp
         </a>
       </Navbar>
     </div>

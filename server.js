@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   port = '5500'
 }
 app.set('port', port)
-console.log(process.env.PROXY)
+
 
 // creating a http server
 const server = http.createServer(app)
