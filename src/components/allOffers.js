@@ -80,7 +80,12 @@ function AllOffers() {
                 const { id, title, created, images } = offer
                 return (
                   <div className='card' key={id}>
-                    <div style={{ height: '20vh', width: '100%' }}>
+                    <div
+                      style={{
+                        height: '20vh',
+                        width: '100%',
+                        objectFit: 'contain'
+                      }}>
                       <img
                         src={images[0]}
                         alt=''
