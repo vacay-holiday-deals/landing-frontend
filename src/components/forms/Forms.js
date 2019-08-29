@@ -32,6 +32,7 @@ function OfferForm({ title }) {
   const [info, setInfo] = useState('')
   const [isSending, setIsSending] = useState(false)
 
+  console.log({ adult, children, departure })
   let msge
 
   const validate = () => {
@@ -106,6 +107,7 @@ function OfferForm({ title }) {
         return res.json()
       })
       .then(res => {
+        console.log(res)
         alert.success(res.Message)
       })
       .catch(error => {
@@ -114,10 +116,14 @@ function OfferForm({ title }) {
 
     setName('')
     setEmail('')
-    setAdult('')
+    setAdult(0)
     setBudget('4 star')
-    setDeparture('')
-    setChildren('')
+    setDeparture(
+      String(
+        format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
+      )
+    )
+    setChildren(0)
     setNationality('Kenya')
     setInfo('')
     setNumber('')

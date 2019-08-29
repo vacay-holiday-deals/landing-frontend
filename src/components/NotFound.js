@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom'
 
 function NotFound() {
   return (
-    <div className='not--found ml-10 MT-10'>
-      <p>
-        Not found page
-        <Link to='/'>
-          <span className='ml-3'>Go back home</span>
+    <div className='notfound'>
+      <div className='container--404'>
+        <div className='image--404'>
+          <img src='/images/svg/not_found.svg' alt='404 not_found' />
+        </div>
+        <h1>Page Not Found</h1>
+        <p>What you were looking for is just not there</p>
+        <Link to='/' className='link--404'>
+          Go somewhere nice
         </Link>
-      </p>
+      </div>
     </div>
   )
 }

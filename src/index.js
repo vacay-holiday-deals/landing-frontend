@@ -12,7 +12,7 @@ import AlertTemplate from 'react-alert-template-basic'
 
 const options = {
   position: 'top center',
-  timeout: 5000,
+  timeout: 10000,
   offset: '30px',
   transition: 'fade'
 }
@@ -25,13 +25,9 @@ const AppRouter = () => (
         <Route
           exact
           path='/:title'
-          render={props =>
-            props.match.params.title ? (
-              <Landing key={props.match.params.title} {...props} />
-            ) : (
-              <NotFound />
-            )
-          }
+          render={props => (
+            <Landing key={props.match.params.title} {...props} />
+          )}
         />
         <Route path='*' component={NotFound} />
       </Switch>

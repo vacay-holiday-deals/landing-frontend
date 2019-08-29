@@ -37,7 +37,10 @@ function Landing(props) {
         setTimeout(() => {
           setLoaded(true)
         }, 500)
-
+        console.log(res)
+        if (res.status === 404) {
+          setOffer(res.data.message)
+        }
         const offers = res.data
         setOffer(offers)
         return { response: res.data }
