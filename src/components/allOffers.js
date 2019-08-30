@@ -69,7 +69,7 @@ function AllOffers() {
           <h4>
             All offers :{' '}
             {!isLoaded ? <span>0</span> : <span>{filteredOffers.length}</span>}
-          </h4>v
+          </h4>
           <div className='content--container'>
             {!isLoaded ? (
               <div className='loader'>
