@@ -12,7 +12,7 @@ import {
 require('dotenv').config()
 
 function App() {
-  const googleTrackingId = 'UA-83869034-1'
+  const googleTrackingId = 'UA-83869034-4'
   const pixelTrackingId = 175932129445300
   // initialise analytics tracking
   useEffect(() => {
