@@ -32,12 +32,11 @@ function OfferForm({ title }) {
   const [info, setInfo] = useState('')
   const [isSending, setIsSending] = useState(false)
 
-  console.log({ adult, children, departure })
   let msge
 
   const validate = () => {
     if (!name && !email && !number) {
-      msge = 'Fields are required'
+      msge = 'All fields are required'
       alert.error(msge)
       return false
     } else if (!name) {
@@ -62,12 +61,13 @@ function OfferForm({ title }) {
   }
 
   const handleSubmit = e => {
+    e.preventDefault()
     // adding google analytics and facebook pixel analytics
     // google
     Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
     TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
 
-    e.preventDefault()
+    
     const isValidated = validate()
     if (!isValidated) {
       return false
@@ -186,11 +186,9 @@ function OfferForm({ title }) {
           </Col>
           <Col>
             <Form.Group className='form--group'>
-              <Form.Label className='label'>
-                Number (with country code)
-              </Form.Label>
+              <Form.Label className='label'>Phone</Form.Label>
               <Form.Control
-                placeholder='+254'
+                placeholder='0700243433'
                 type='number'
                 className='form--control'
                 onChange={e => {

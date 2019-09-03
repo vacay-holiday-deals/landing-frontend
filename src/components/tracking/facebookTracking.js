@@ -11,7 +11,7 @@ export const initPixel = pixelId => {
 }
 
 export const TrackPageView = () => {
-  ReactPixel.pageView(window.location.pathname)
+  ReactPixel.pageView()
 }
 
 export const TrackEvent = (event, data) => {

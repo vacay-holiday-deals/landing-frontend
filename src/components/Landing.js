@@ -37,7 +37,6 @@ function Landing(props) {
         setTimeout(() => {
           setLoaded(true)
         }, 500)
-        console.log(res)
         if (res.status !== 200) {
           setOffer(res.data.message)
         }
@@ -63,8 +62,6 @@ function Landing(props) {
     images
   } = offer
 
-  console.log(images)
-
   // function to change value to string and parse it as html value
   const changeToString = value => {
     const val = String(value)
@@ -87,11 +84,7 @@ function Landing(props) {
           <div className='landing'>
             <div className='landing--container'>
               <section className='landing--carousel'>
-                <img
-                  src={images.length !== 0 ? images[0] : Message}
-                  alt=''
-                  className='background--image'
-                />
+                <img src={images[0]} alt='' className='background--image' />
                 <div className='carousel--container'>
                   <Carousel images={images} />
                 </div>

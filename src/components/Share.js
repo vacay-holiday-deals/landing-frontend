@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { TrackEvent } from '../components/tracking/facebookTracking'
 import { Event } from '../components/tracking/googleTracking'
 
+
 function Share({ title, image, overview }) {
   const url = window.location.href
   const newUrl = encodeURIComponent(url)
@@ -18,7 +19,7 @@ function Share({ title, image, overview }) {
       <h4 className='mt-3 ml-2'>Tell a friend</h4>
       <Navbar className='nav--appbar'>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}&quote=${title}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=${newUrl}&quote=${title}&display=page&caption=${title}`}
           className='facebook'
           target='_blank'
           onClick={() => {
@@ -32,7 +33,7 @@ function Share({ title, image, overview }) {
           Facebook
         </a>
         <a
-          href={`http://twitter.com/share?url=${newUrl}&text=${title}&hashtags="vacayholidaydeals"`}
+          href={`http://twitter.com/share?url=${newUrl}\n&text=${title}&hashtags=vacayholidaydeals&via=vacayholidaydeals`}
           className='twitter'
           rel='noopener noreferrer'
           onClick={() => {
