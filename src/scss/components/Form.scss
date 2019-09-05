@@ -22,9 +22,9 @@
   font-family: var(--primary-font);
   border: none;
 
-  &:active {
+  &:focus {
     outline-color: transparent;
-    border: none;
+    border: none !important;
   }
 
   &::placeholder {
