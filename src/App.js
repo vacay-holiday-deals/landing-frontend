@@ -9,11 +9,13 @@ import {
   initPixel,
   TrackPageView
 } from './components/tracking/facebookTracking'
+import { initTagManager } from './components/tracking/googleTagManager'
 require('dotenv').config()
 
 function App() {
   const googleTrackingId = 'UA-83869034-4'
   const pixelTrackingId = 175932129445300
+  const tagManagerId = 'AW-963865935'
   // initialise analytics tracking
   useEffect(() => {
     try {
@@ -24,6 +26,12 @@ function App() {
       // facebook pixel tracking
       initPixel(pixelTrackingId)
       TrackPageView()
+
+      // google tag manager initialization
+      const tagManagerArgs = {
+        gtmId: tagManagerId
+      }
+      initTagManager(tagManagerArgs)
     } catch (error) {
       throw error
     }

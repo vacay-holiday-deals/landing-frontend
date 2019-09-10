@@ -102,7 +102,7 @@ function OfferForm({ title }) {
         }
       }
     )
-    
+
     try {
       alert.success(res.data.Message)
     } catch (error) {
@@ -126,11 +126,11 @@ function OfferForm({ title }) {
 
   return (
     <Container className='Form--container'>
-      <h4>Get in touch</h4>
       <Form action='' method='post'>
+        <h4>Get in touch</h4>
+        <br />
         <Form.Group className='form--group'>
           <Form.Label className='label'>Name</Form.Label>
-
           <Form.Control
             type='text'
             placeholder='John Doe'
@@ -280,24 +280,22 @@ function OfferForm({ title }) {
             value={info}
           />
         </Form.Group>
-
-        <Button
-          variant='primary'
-          type='submit'
-          size='lg'
-          block
-          onClick={handleSubmit}
-          className='form--btn'>
-          {isSending && (
-            <div className='loading'>
-              <Loader type='ThreeDots' color='#fff' height={30} width={30} />
-              <span className='ml-3'> sending</span>
-            </div>
-          )}
-
-          {!isSending && <span>Send</span>}
-        </Button>
       </Form>
+      <Button
+        variant='primary'
+        type='submit'
+        size='lg'
+        block
+        onClick={handleSubmit}
+        className='form--btn'>
+        {isSending ? (
+          <div className='loading'>
+            <Loader type='ThreeDots' color='#fff' height={45} width={45} />
+          </div>
+        ) : (
+          <span>SEND</span>
+        )}
+      </Button>
     </Container>
   )
 }

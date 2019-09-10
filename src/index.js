@@ -5,6 +5,7 @@ import Apphistory from './routes/AppHistory'
 import './index.scss'
 import App from './App'
 import NotFound from './pages/NotFound'
+import Policy from './pages/Policy'
 import Landing from './components/Landing'
 import * as serviceWorker from './serviceWorker'
 import { Provider as AlertProvider } from 'react-alert'
@@ -22,6 +23,10 @@ const AppRouter = () => (
     <Router history={Apphistory}>
       <Switch>
         <Route exact path='/' component={App} />
+        <Route
+          exact
+          path='/vacay-holiday-deals-privacy-policy'
+          component={Policy}></Route>
         <Route
           exact
           path='/:title'

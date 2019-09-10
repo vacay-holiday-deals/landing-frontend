@@ -52,7 +52,7 @@ function Landing(props) {
     result
       .then(res => setOffer(res))
       .catch(error => {
-        setLoaded(true)
+        setLoaded(false)
         console.log(error)
       })
     // eslint-disable-next-line
@@ -83,7 +83,7 @@ function Landing(props) {
               <section className='landing--carousel'>
                 <img
                   src={images ? images[0] : '/images/beach.jpg'}
-                  alt=''
+                  alt='slider background'
                   className='background--image'
                 />
                 <div className='carousel--container'>
@@ -114,11 +114,7 @@ function Landing(props) {
                     </div>
                   </div>
                   <div className='landing--info-form'>
-                    <Sharebar
-                      title={title}
-                      image={images}
-                      overview={overview}
-                    />
+                    <Sharebar title={title} image={images} />
                     <Form title={title} />
                   </div>
                 </Container>

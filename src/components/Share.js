@@ -9,7 +9,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import { TrackEvent } from '../components/tracking/facebookTracking'
 import { Event } from '../components/tracking/googleTracking'
 
-
 function Share({ title, image, overview }) {
   const url = window.location.href
   const newUrl = encodeURIComponent(url)
@@ -23,8 +22,8 @@ function Share({ title, image, overview }) {
           className='facebook'
           target='_blank'
           onClick={() => {
-            Event('SHARING', 'share to facebook', 'SHARED_TO_FACEBOOK')
-            TrackEvent('SHARING', 'SHARED_TO_FACEBOOK')
+            Event('SHARING', 'share to facebook', 'shared_to_facebook')
+            TrackEvent('SHARING', 'shared_to_facebook')
           }}
           rel='noopener noreferrer'>
           <span className='fontawesomeicon'>
@@ -37,8 +36,8 @@ function Share({ title, image, overview }) {
           className='twitter'
           rel='noopener noreferrer'
           onClick={() => {
-            Event('SHARING', 'share to Twitter', 'SHARED_TO_TWITTER')
-            TrackEvent('SHARING', 'SHARED_TO_TWITTER')
+            Event('SHARING', 'share to Twitter', 'shared_to_twitter')
+            TrackEvent('SHARING', 'shared_to_twitter')
           }}
           target='_blank'>
           <span className='fontawesomeicon'>
@@ -51,8 +50,8 @@ function Share({ title, image, overview }) {
           className='whatsapp'
           rel='noopener noreferrer'
           onClick={() => {
-            Event('SHARING', 'share to whatsapp', 'SHARED_TO_WHATSAPP')
-            TrackEvent('SHARING', 'SHARED_TO_WHATSAPP')
+            Event('SHARING', 'share to whatsapp', 'shared_to_whatsapp')
+            TrackEvent('SHARING', 'shared_to_whatsapp')
           }}
           target='_blank'>
           <span className='fontawesomeicon'>
