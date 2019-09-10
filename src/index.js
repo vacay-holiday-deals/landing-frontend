@@ -23,11 +23,10 @@ const AppRouter = () => (
     <Router history={Apphistory}>
       <Switch>
         <Route exact path='/' component={App} />
-        <Route
+        {/* <Route
           exact
           path='/vacay-holiday-deals-privacy-policy'
-          component={Policy}></Route>
-
+          component={Policy}></Route> */}
         <Route
           exact
           path='/:title'
