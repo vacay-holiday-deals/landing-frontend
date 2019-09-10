@@ -81,7 +81,11 @@ function Landing(props) {
           <div className='landing'>
             <div className='landing--container'>
               <section className='landing--carousel'>
-                <img src={images[0]} alt='' className='background--image' />
+                <img
+                  src={images ? images[0] : '/images/beach.jpg'}
+                  alt=''
+                  className='background--image'
+                />
                 <div className='carousel--container'>
                   <Carousel images={images} />
                 </div>
