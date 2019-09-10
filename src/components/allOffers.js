@@ -6,8 +6,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
-import { TrackEvent } from '../components/tracking/facebookTracking'
-import { Event } from '../components/tracking/googleTracking'
+import { TrackEvent } from './tracking/facebookTracking'
+import { Event } from './tracking/googleTracking'
 require('dotenv').config()
 
 function AllOffers() {

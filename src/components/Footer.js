@@ -6,6 +6,7 @@ import {
   faInstagram,
   faTwitter
 } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -61,13 +62,13 @@ function Footer() {
               target='_blank'>
               Blog
             </a>
-            <a
-              href='https://vacay.co.ke/vacay-holiday-deals-privacy-policy/links'
+            <Link
+              to='/vacay-holiday-deals-privacy-policy'
               className='link--items'
               rel='noopener noreferrer'
               target='_blank'>
               Privacy and Policy
-            </a>
+            </Link>
           </div>
         </div>
         <div className='footer--links cards'>

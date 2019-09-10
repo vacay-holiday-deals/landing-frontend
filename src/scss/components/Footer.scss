@@ -88,37 +88,6 @@
 // media queries for a responsive design
 
 // Portrait mode (phone)
-@media only screen and (min-device-width: 320px) and (max-device-width: 700px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .footer {
-    height: auto;
-    &--container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-left: 0;
-      width: 100%;
-      grid-gap: 2px;
-      height: auto;
-    }
-    &--header {
-      font-size: 0.9rem;
-    }
-
-    .cards {
-      width: 12rem;
-    }
-    .link--items {
-      font-size: 0.6rem;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-    &--copyright {
-      width: 100%;
-    }
-  }
-}
-
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .footer {
     height: auto;
@@ -132,14 +101,14 @@
       padding-left: 5rem;
     }
     &--header {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .cards {
       width: 12rem;
     }
     .link--items {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       &:hover {
         text-decoration: none;
       }
@@ -149,21 +118,6 @@
     }
   }
 }
-
-// Portrait mode (tablet)
-@media only screen and (min-device-width: 700px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-  .footer {
-    height: auto;
-    &--container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 5px;
-      padding-left: 5rem;
-      height: auto;
-    }
-  }
-}
-
 @media only screen and (min-width: 700px) and (max-width: 1024px) {
   .footer {
     height: auto;
@@ -175,8 +129,4 @@
       height: auto;
     }
   }
-}
-
-// Landscape mode (phone)
-@media only screen and (min-device-width: 320px) and (max-device-width: 800px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 }
