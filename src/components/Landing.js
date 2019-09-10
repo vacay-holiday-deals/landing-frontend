@@ -24,35 +24,41 @@ function Landing(props) {
   const [offer, setOffer] = useState([])
   const [loaded, setLoaded] = useState(false)
 
+  const getOffer = async () => {
+    const { title } = props.match.params
+    const res = await axios.get(
+      `${URL_PROXY}:${PORT_NUM}/api/getoffer/${title}`
+    )
+    return res.data
+  }
+  // function to change value to string and parse it as html value
+  const changeToString = value => {
+    const val = String(value)
+      .split('"')
+      .join('')
+    return parser(val)
+  }
+
   useEffect(() => {
     initGA(googleTrackingId)
     initPixel(pixelTrackingId)
     PageView()
     TrackPageView()
-    const { title } = props.match.params
-    axios
-      .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer/${title}`)
-      .then(res => {
-        // setOffer to the last offer in the array
-        setTimeout(() => {
-          setLoaded(true)
-        }, 500)
-        if (res.status !== 200) {
-          setOffer(res.data.message)
-        }
-        const offers = res.data
-        setOffer(offers)
-        return { response: res.data }
-      })
+
+    const result = getOffer()
+    setTimeout(() => {
+      setLoaded(true)
+    }, 500)
+    result
+      .then(res => setOffer(res))
       .catch(error => {
         setLoaded(true)
-        return { Message: error }
+        console.log(error)
       })
     // eslint-disable-next-line
   }, [])
 
   const {
-    Message,
     title,
     overview,
     itinerary,
@@ -61,15 +67,6 @@ function Landing(props) {
     addinfo,
     images
   } = offer
-
-  // function to change value to string and parse it as html value
-  const changeToString = value => {
-    const val = String(value)
-      .split('"')
-      .join('')
-
-    return parser(val)
-  }
 
   return (
     <div className='App'>

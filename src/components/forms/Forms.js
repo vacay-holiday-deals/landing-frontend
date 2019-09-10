@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
+import axios from 'axios'
 
 function OfferForm({ title }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -60,14 +61,13 @@ function OfferForm({ title }) {
     }
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     // adding google analytics and facebook pixel analytics
     // google
     Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
     TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
 
-    
     const isValidated = validate()
     if (!isValidated) {
       return false
@@ -92,27 +92,22 @@ function OfferForm({ title }) {
       Info: info
     }
 
-    console.log(details)
-
-    fetch(`${URL_PROXY}:${PORT_NUM}/api/uploadDetail`, {
-      method: 'post',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(details),
-      mode: 'cors'
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(res => {
-        console.log(res)
-        alert.success(res.Message)
-      })
-      .catch(error => {
-        return error
-      })
+    const res = await axios.post(
+      `${URL_PROXY}:${PORT_NUM}/api/uploadDetail`,
+      details,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    
+    try {
+      alert.success(res.data.Message)
+    } catch (error) {
+      alert.error(error)
+    }
 
     setName('')
     setEmail('')
