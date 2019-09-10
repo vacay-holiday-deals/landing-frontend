@@ -13,14 +13,17 @@
     & > .whatsapp {
       background-color: var(--whatsapp-color);
       color: var(--light-color);
+      box-shadow: var(--box-shadow-1);
     }
     & > .facebook {
       background-color: var(--facebook-color);
       color: var(--light-color);
+      box-shadow: var(--box-shadow-1);
     }
     & > .twitter {
       background-color: var(--twitter-color);
       color: var(--light-color);
+      box-shadow: var(--box-shadow-1);
     }
 
     & > a {

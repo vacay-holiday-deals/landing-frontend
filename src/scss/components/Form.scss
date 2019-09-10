@@ -1,8 +1,16 @@
 .Form--container {
-  padding: 20px;
   background: var(--light-color);
   opacity: 0.9;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  padding: 0;
+  box-shadow: var(--box-shadow-1);
+}
+form {
+  padding: 30px;
 }
 
 .form--group {
@@ -11,20 +19,22 @@
 }
 .label {
   font-family: var(--primary-font);
-  font-size: 0.89rem;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .form--control {
   border-radius: 3px;
   height: 3.5rem;
   max-width: 100%;
-  background: var(--secondary-grey);
+  background: var(--white-color);
   font-family: var(--primary-font);
-  border: none;
+  border: 0.5px solid #eee;
+  box-shadow: var(--box-shadow-2);
+  padding-left: 20px;
 
   &:focus {
-    outline-color: transparent;
-    border: none !important;
+    outline: none !important;
   }
 
   &::placeholder {
@@ -37,15 +47,17 @@ option::placeholder {
   color: #9c9c9c;
 }
 .textarea {
-  min-height: 10rem;
+  min-height: 12rem;
+
   font-size: 0.9rem;
-  background: var(--secondary-grey);
+  background: var(--white-color);
   font-family: var(--primary-font);
   border-radius: 2px;
   border: none;
+  box-shadow: var(--box-shadow-2);
 
-  &:active {
-    outline-color: transparent;
+  &:focus {
+    outline-color: transparent !important;
     border: none;
   }
 
@@ -57,13 +69,15 @@ option::placeholder {
   }
 }
 .form--btn {
-  height: 3.5rem;
+  height: 5rem !important;
   background: var(--primary-color);
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   font-family: var(--primary-font);
   font-weight: 700;
   box-shadow: var(--box-shadow);
-  font-size: 1rem;
+  font-size: 1.2rem;
+  width: 100%;
+
   & > .loading {
     display: flex;
     justify-content: center;
@@ -75,10 +89,13 @@ option::placeholder {
 @media only screen and (min-width: 320px) and (max-width: 700px) {
   .Form--container {
     opacity: 1;
+    width: 95%;
+    margin: 0 2.5%;
   }
 
-  h5 {
-    font-size: 0.9rem;
+  h4 {
+    font-size: 1.2rem;
+    font-family: var(--primary-font);
   }
   .label {
     font-size: 0.9rem;
