@@ -15,7 +15,7 @@ require('dotenv').config()
 function App() {
   const googleTrackingId = 'UA-83869034-4'
   const pixelTrackingId = 175932129445300
-  const tagManagerId = 'AW-963865935'
+  const tagManagerId = 'GTM-TFBZDGX'
   // initialise analytics tracking
   useEffect(() => {
     try {
