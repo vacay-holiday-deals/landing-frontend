@@ -69,12 +69,13 @@
 
       & .info--title {
         padding: 10px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
         margin: 1rem 0;
         text-transform: uppercase;
         color: var(--dark-color);
         font-family: var(--secondary-heading-font);
+        width: 80%;
       }
       & > .more--info {
         width: 80%;
