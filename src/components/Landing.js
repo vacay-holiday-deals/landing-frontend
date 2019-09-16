@@ -15,8 +15,8 @@ import { initGA, PageView } from './tracking/googleTracking'
 import { initPixel, TrackPageView } from './tracking/facebookTracking'
 
 function Landing(props) {
-  const googleTrackingId = 'UA-83869034-4'
-  const pixelTrackingId = 175932129445300
+  const googleTrackingId = process.env.REACT_APP_GOOGLE_TRACKING_TAG
+  const pixelTrackingId = process.env.REACT_APP_FACEBOOK_TRACKING_TAG
 
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM

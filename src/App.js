@@ -13,9 +13,10 @@ import { initTagManager } from './components/tracking/googleTagManager'
 require('dotenv').config()
 
 function App() {
-  const googleTrackingId = 'UA-83869034-4'
-  const pixelTrackingId = 175932129445300
-  const tagManagerId = 'GTM-TFBZDGX'
+  const googleTrackingId = process.env.REACT_APP_GOOGLE_TRACKING_TAG
+  const pixelTrackingId = process.env.REACT_APP_FACEBOOK_TRACKING_TAG
+  const tagManagerId = process.env.REACT_APP_GTM_TRACKING_TAG
+
   // initialise analytics tracking
   useEffect(() => {
     try {
@@ -35,7 +36,7 @@ function App() {
     } catch (error) {
       throw error
     }
-  }, [])
+  }, [googleTrackingId, pixelTrackingId, tagManagerId])
   return (
     //if not loading render the div app
     <div className='App'>

@@ -65,8 +65,6 @@ function OfferForm({ title }) {
     e.preventDefault()
     // adding google analytics and facebook pixel analytics
     // google
-    Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
-    Track('track', 'CompleteRegistration')
 
     const isValidated = validate()
     if (!isValidated) {
@@ -105,6 +103,9 @@ function OfferForm({ title }) {
 
     try {
       alert.success(res.data.Message)
+      Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
+      TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILS')
+      Track('track', 'CompleteRegistration')
     } catch (error) {
       alert.error(error)
     }
