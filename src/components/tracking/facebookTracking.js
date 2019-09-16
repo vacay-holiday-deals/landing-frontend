@@ -17,3 +17,6 @@ export const TrackPageView = () => {
 export const TrackEvent = (event, data) => {
   ReactPixel.trackCustom(event, data)
 }
+export const Track = (event, data) => {
+  ReactPixel.track(event, data)
+}

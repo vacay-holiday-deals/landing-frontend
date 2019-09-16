@@ -7,7 +7,7 @@ import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
-import { TrackEvent } from '../tracking/facebookTracking'
+import { TrackEvent, Track } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
@@ -66,7 +66,7 @@ function OfferForm({ title }) {
     // adding google analytics and facebook pixel analytics
     // google
     Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
-    TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
+    Track('track', 'CompleteRegistration')
 
     const isValidated = validate()
     if (!isValidated) {
