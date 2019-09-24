@@ -11,7 +11,9 @@ import axios from 'axios'
 import DestinationOptions from '../DestinationOptions'
 
 function OfferForm({ title, destination }) {
-  console.log(destination)
+  const URL_PROXY = process.env.REACT_APP_PROXY_URL
+  const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
   const alert = useAlert()
 
   const [name, setName] = useState('')
@@ -89,12 +91,16 @@ function OfferForm({ title, destination }) {
       Info: info
     }
 
-    const res = await axios.post(`/api/usersdata`, details, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
+    const res = await axios.post(
+      `${URL_PROXY}:${PORT_NUM}/api/uploadDetail`,
+      details,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
       }
-    })
+    )
 
     try {
       alert.success(res.data.Message)
