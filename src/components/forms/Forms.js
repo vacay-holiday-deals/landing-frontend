@@ -8,6 +8,7 @@ import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
+import history from '../../routes/AppHistory'
 import DestinationOptions from '../DestinationOptions'
 
 function OfferForm({ title, destination }) {
@@ -91,22 +92,18 @@ function OfferForm({ title, destination }) {
       Info: info
     }
 
-    const res = await axios.post(
-      `${URL_PROXY}:${PORT_NUM}/api/uploadDetail`,
-      details,
-      {
+    axios
+      .post(`${URL_PROXY}:${PORT_NUM}/api/uploadDetail`, details, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         }
-      }
-    )
-
-    try {
-      alert.success(res.data.Message)
-    } catch (error) {
-      alert.error(error)
-    }
+      })
+      .then(res => {
+        history.push('/confirmation')
+        alert.success(res.data.message)
+      })
+      .catch(error => alert.error(error))
 
     setName('')
     setEmail('')
