@@ -9,11 +9,9 @@ import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
 import uuid from 'uuid'
-import history from '../../routes/AppHistory'
 
 function OfferForm({ title, destination }) {
-  const URL_PROXY = process.env.REACT_APP_PROXY_URL
-  const PORT_NUM = process.env.REACT_APP_PORT_NUM
+  console.log(destination)
   const alert = useAlert()
 
   const [name, setName] = useState('')
@@ -85,26 +83,21 @@ function OfferForm({ title, destination }) {
       Nationality: nationality,
       Number: number,
       Departure: departure,
-      Destination: destinations,
       Adults: adult,
       Children: children,
       Budget: budget,
       Info: info
     }
 
-    axios
-      .post(`${URL_PROXY}:${PORT_NUM}/api/uploadDetail`, details, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => {
-        alert.success(res.data.Message)
-        history.push('/confirmation')
-      })
+    const res = await axios.post(`/api/usersdata`, details, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
 
     try {
+      alert.success(res.data.Message)
     } catch (error) {
       alert.error(error)
     }

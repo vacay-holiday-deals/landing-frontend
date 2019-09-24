@@ -3,8 +3,6 @@ import Carousel from './Carousel'
 import Sharebar from './Share'
 import Form from './forms/Forms'
 import Tabs from './tabs/Tabs'
-import Container from 'react-bootstrap/Container'
-import axios from 'axios'
 import parser from 'html-react-parser'
 import Call from './Call'
 import Footer from './Footer'
@@ -13,24 +11,17 @@ import Loader from 'react-loader-spinner'
 import PropTypes from 'prop-types'
 import { initGA, PageView } from './tracking/googleTracking'
 import { initPixel, TrackPageView } from './tracking/facebookTracking'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 
 function Landing(props) {
-  const googleTrackingId = process.env.REACT_APP_GOOGLE_TRACKING_TAG
-  const pixelTrackingId = process.env.REACT_APP_FACEBOOK_TRACKING_TAG
+  const googleTrackingId = ''
+  const pixelTrackingId = ''
 
-  const URL_PROXY = process.env.REACT_APP_PROXY_URL
-  const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
-  const [offer, setOffer] = useState([])
   const [loaded, setLoaded] = useState(false)
 
-  const getOffer = async () => {
-    const { title } = props.match.params
-    const res = await axios.get(
-      `${URL_PROXY}:${PORT_NUM}/api/getoffer/${title}`
-    )
-    return res.data
-  }
+  const offer = useStoreState(state => state.offer)
+  const fetchOffer = useStoreActions(actions => actions.getOffer)
+
   // function to change value to string and parse it as html value
   const changeToString = value => {
     const val = String(value)
@@ -40,21 +31,17 @@ function Landing(props) {
   }
 
   useEffect(() => {
+    const { title } = props.match.params
     initGA(googleTrackingId)
     initPixel(pixelTrackingId)
     PageView()
     TrackPageView()
 
-    const result = getOffer()
     setTimeout(() => {
       setLoaded(true)
     }, 500)
-    result
-      .then(res => setOffer(res))
-      .catch(error => {
-        setLoaded(false)
-        console.log(error)
-      })
+
+    fetchOffer(title)
     // eslint-disable-next-line
   }, [])
 
@@ -69,13 +56,11 @@ function Landing(props) {
     destination
   } = offer
 
-  console.log(offer)
-
   return (
     <div className='App'>
       {!loaded ? (
         <div className='loader'>
-          <Loader type='Bars' color='#0068b3' height={150} width={150} />
+          <Loader type='ThreeDots' color='#0068b3' height={150} width={150} />
         </div>
       ) : (
         <div className='App'>
@@ -94,7 +79,7 @@ function Landing(props) {
                 </div>
               </section>
               <section className='landing--info'>
-                <Container fluid={true} className='landing--info-container'>
+                <div className='landing--info-container'>
                   <div className='landing--info-tabs'>
                     <h4 className='info--title'>{title}</h4>
                     <Tabs>
@@ -120,7 +105,7 @@ function Landing(props) {
                     <Sharebar title={title} image={images} />
                     <Form title={title} destination={destination} />
                   </div>
-                </Container>
+                </div>
               </section>
             </div>
           </div>

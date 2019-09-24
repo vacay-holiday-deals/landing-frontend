@@ -1,35 +1,26 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { TrackEvent } from './tracking/facebookTracking'
 import { Event } from './tracking/googleTracking'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 require('dotenv').config()
 
 function AllOffers() {
-  const URL_PROXY = process.env.REACT_APP_PROXY_URL
-  const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
-  const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   const [value, setValue] = useState('')
+
+  const offers = useStoreState(state => state.offers)
+  const fetchOffers = useStoreActions(actions => actions.getOffers)
+
   useEffect(() => {
-    axios
-      .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer`)
-      .then(res => {
-        setTimeout(() => {
-          setLoaded(true)
-        }, 200)
-        setOffers(res.data)
-      })
-      .catch(error => {
-        console.log(error)
-        setLoaded(true)
-      })
+    setTimeout(() => {
+      setLoaded(true)
+    }, 1000)
+    fetchOffers()
     // eslint-disable-next-line
   }, [])
 
