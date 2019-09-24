@@ -101,7 +101,6 @@ function OfferForm({ title, destination }) {
       })
       .then(res => {
         history.push('/confirmation')
-        alert.success(res.data.message)
       })
       .catch(error => alert.error(error))
 
