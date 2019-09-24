@@ -102,7 +102,9 @@ function OfferForm({ title, destination }) {
       .then(res => {
         history.push('/confirmation')
       })
-      .catch(error => alert.error(error))
+      .catch(error => {
+        console.log(error)
+      })
 
     setName('')
     setEmail('')
