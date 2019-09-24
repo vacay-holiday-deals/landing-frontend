@@ -32,8 +32,6 @@ function AllOffers() {
       })
     // eslint-disable-next-line
   }, [])
-  const height = '100%'
-  const width = '100%'
 
   let filteredOffers = offers.filter(offer => {
     return offer.title.toLowerCase().indexOf(value.toLowerCase()) !== -1
@@ -43,13 +41,10 @@ function AllOffers() {
     <Fragment>
       <div className='container-fluid landing--container'>
         <div className='landing--img'>
-          <LazyLoadImage
-            src='images/images/beach.jpg'
+          <img
+            src='https://res.cloudinary.com/lostvane/image/upload/v1565157605/Projects/vacay/bkxano6dqf4buvwo1ojb.png'
             alt='vacay'
-            effect='blur'
             className='image'
-            height={height}
-            width={width}
           />
         </div>
 

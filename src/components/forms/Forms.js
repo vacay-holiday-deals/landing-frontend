@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import Form, { Row } from 'react-bootstrap/Form'
 import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
-import { TrackEvent, Track } from '../tracking/facebookTracking'
+import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
+import uuid from 'uuid'
+import history from '../../routes/AppHistory'
 
-function OfferForm({ title }) {
+function OfferForm({ title, destination }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
   const alert = useAlert()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('Kenya')
   const [number, setNumber] = useState('')
+  const [destinations, setDestinations] = useState(destination[0])
   const [departure, setDeparture] = useState(
     String(
       format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
@@ -65,6 +64,8 @@ function OfferForm({ title }) {
     e.preventDefault()
     // adding google analytics and facebook pixel analytics
     // google
+    Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
+    TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
 
     const isValidated = validate()
     if (!isValidated) {
@@ -84,28 +85,26 @@ function OfferForm({ title }) {
       Nationality: nationality,
       Number: number,
       Departure: departure,
+      Destination: destinations,
       Adults: adult,
       Children: children,
       Budget: budget,
       Info: info
     }
 
-    const res = await axios.post(
-      `${URL_PROXY}:${PORT_NUM}/api/uploadDetail`,
-      details,
-      {
+    axios
+      .post(`${URL_PROXY}:${PORT_NUM}/api/uploadDetail`, details, {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         }
-      }
-    )
+      })
+      .then(res => {
+        alert.success(res.data.Message)
+        history.push('/confirmation')
+      })
 
     try {
-      alert.success(res.data.Message)
-      Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
-      TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILS')
-      Track('track', 'CompleteRegistration')
     } catch (error) {
       alert.error(error)
     }
@@ -114,6 +113,7 @@ function OfferForm({ title }) {
     setEmail('')
     setAdult(0)
     setBudget('4 star')
+    setDestinations(destination[0])
     setDeparture(
       String(
         format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
@@ -126,13 +126,13 @@ function OfferForm({ title }) {
   }
 
   return (
-    <Container className='Form--container'>
-      <Form action='' method='post'>
+    <div className='form--container'>
+      <form action='' method='post'>
         <h4>Get in touch</h4>
         <br />
-        <Form.Group className='form--group'>
-          <Form.Label className='label'>Name</Form.Label>
-          <Form.Control
+        <div className='form--group'>
+          <label className='label'>name</label>
+          <input
             type='text'
             placeholder='John Doe'
             className='form--control'
@@ -143,12 +143,11 @@ function OfferForm({ title }) {
             value={name}
             required={true}
           />
-        </Form.Group>
+        </div>
 
-        <Form.Group className='form--group'>
-          <Form.Label className='label'>Email</Form.Label>
-
-          <Form.Control
+        <div className='form--group'>
+          <label className='label'>email</label>
+          <input
             type='email'
             placeholder='jdoe@gmail.com'
             className='form--control'
@@ -159,136 +158,138 @@ function OfferForm({ title }) {
             value={email}
             required={true}
           />
-        </Form.Group>
-        <Row>
-          <Col>
-            <Form.Group className='form--group'>
-              <Form.Label className='label'>Nationality</Form.Label>
-              <Form.Control
-                as='select'
-                className='form--control'
-                name='nationality'
-                onChange={e => {
-                  setNationality(e.target.value)
-                }}
-                value={nationality}
-                required={true}>
-                <option value='Kenya'>Kenya</option>
-                {Country.allCountries.map((name, key) => (
-                  <option key={name.iso2}>{name.name}</option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className='form--group'>
-              <Form.Label className='label'>Phone</Form.Label>
-              <Form.Control
-                placeholder='0700243433'
-                type='number'
-                className='form--control'
-                onChange={e => {
-                  setNumber(e.target.value)
-                }}
-                value={number}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+        </div>
 
-        <Form.Group className='form--group'>
-          <Form.Label className='label'>Departure</Form.Label>
+        <div className='joint'>
+          <div className='form--group'>
+            <label className='label'>nationality</label>
+            <select
+              className='form--control'
+              name='nationality'
+              onChange={e => {
+                setNationality(e.target.value)
+              }}
+              value={nationality}
+              required={true}>
+              <option value='Kenya'>Kenya</option>
+              {Country.allCountries.map((name, key) => (
+                <option key={name.iso2}>{name.name}</option>
+              ))}
+            </select>
+          </div>
 
-          <Form.Control
-            type='date'
-            placeholder='departure'
-            className='form--control'
-            onChange={e => {
-              setDeparture(e.target.value)
-            }}
-            value={departure}
-            required
-          />
-        </Form.Group>
-        <Row>
-          <Col>
-            <Form.Group className='form--group'>
-              <Form.Label className='label'>
-                Adults (12 years and above)
-              </Form.Label>
-              <Form.Control
-                type='Number'
-                placeholder='adults'
-                className='form--control'
-                aria-describedby='inputGroupPrepend'
-                onChange={e => {
-                  setAdult(e.target.value)
-                }}
-                value={adult}
-                required
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group className='form--group'>
-              <Form.Label className='label'>
-                Children (12 years under)
-              </Form.Label>
+          <div className='form--group'>
+            <label className='label'>phone</label>
+            <input
+              placeholder='0700243433'
+              type='number'
+              className='form--control'
+              onChange={e => {
+                setNumber(e.target.value)
+              }}
+              value={number}
+              required
+            />
+          </div>
+        </div>
+        <div className='joint'>
+          <div className='form--group'>
+            <label className='label'>departure</label>
+            <input
+              type='date'
+              placeholder='departure'
+              className='form--control'
+              onChange={e => {
+                setDeparture(e.target.value)
+              }}
+              value={departure}
+              required
+            />
+          </div>
 
-              <Form.Control
-                type='Number'
-                placeholder='children'
-                className='form--control'
-                onChange={e => {
-                  setChildren(e.target.value)
-                }}
-                value={children}
-                required
-              />
-            </Form.Group>
-          </Col>
-        </Row>
+          <div className='form--group'>
+            <label className='label'>destination</label>
+            <select
+              className='form--control'
+              name='destinations'
+              onChange={e => {
+                setDestinations(e.target.value)
+              }}
+              value={destinations}
+              required={true}>
+              <option value={destination[0]}>{destination[0]}</option>
+              {destination.map(location => (
+                <option key={uuid.v4()}>{location}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className='joint'>
+          <div className='form--group'>
+            <label className='label'>adults : 12yrs +</label>
+            <input
+              type='Number'
+              placeholder='adults'
+              className='form--control'
+              aria-describedby='inputGroupPrepend'
+              onChange={e => {
+                setAdult(e.target.value)
+              }}
+              value={adult}
+              required
+            />
+          </div>
+          <div className='form--group'>
+            <label className='label'>children : 12yrs under</label>
 
-        <Form.Group className='form--group'>
-          <Form.Label className='label'>Hotel Budget</Form.Label>
+            <input
+              type='Number'
+              placeholder='children'
+              className='form--control'
+              onChange={e => {
+                setChildren(e.target.value)
+              }}
+              value={children}
+              required
+            />
+          </div>
+        </div>
 
-          <Form.Control
-            as='select'
+        <div className='form--group'>
+          <label className='label'>hotel budget</label>
+
+          <select
             className='form--control select'
             onChange={e => {
-              setBudget(e.target.value)
+              setBudget({ value: e.target.value })
             }}
             required
             value={budget}>
             <option defaultValue>4 star</option>
             <option>3 star</option>
             <option>5 star</option>
-          </Form.Control>
-        </Form.Group>
+          </select>
+        </div>
 
-        <Form.Group className='form--group'>
-          <Form.Label className='label'>Additional details</Form.Label>
-
-          <Form.Control
-            as='textarea'
+        <div className='form--group'>
+          <label className='label'>additional details</label>
+          <textarea
             placeholder='other details'
-            size='lg'
             className='textarea'
             onChange={e => {
               setInfo(e.target.value)
             }}
-            value={info}
-          />
-        </Form.Group>
-      </Form>
+            value={info}></textarea>
+        </div>
+      </form>
+
       <Button
         variant='primary'
         type='submit'
         size='lg'
         block
         onClick={handleSubmit}
-        className='form--btn'>
+        className='btn form--btn'>
         {isSending ? (
           <div className='loading'>
             <Loader type='ThreeDots' color='#fff' height={45} width={45} />
@@ -297,7 +298,7 @@ function OfferForm({ title }) {
           <span>SEND</span>
         )}
       </Button>
-    </Container>
+    </div>
   )
 }
 

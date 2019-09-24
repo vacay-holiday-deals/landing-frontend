@@ -65,8 +65,11 @@ function Landing(props) {
     inclusion,
     price,
     addinfo,
-    images
+    images,
+    destination
   } = offer
+
+  console.log(offer)
 
   return (
     <div className='App'>
@@ -115,7 +118,7 @@ function Landing(props) {
                   </div>
                   <div className='landing--info-form'>
                     <Sharebar title={title} image={images} />
-                    <Form title={title} />
+                    <Form title={title} destination={destination} />
                   </div>
                 </Container>
               </section>
