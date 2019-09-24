@@ -8,7 +8,7 @@ import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
-import uuid from 'uuid'
+import DestinationOptions from '../DestinationOptions'
 
 function OfferForm({ title, destination }) {
   console.log(destination)
@@ -212,7 +212,7 @@ function OfferForm({ title, destination }) {
               required={true}>
               <option value={destination[0]}>{destination[0]}</option>
               {destination.map(location => (
-                <option key={uuid.v4()}>{location}</option>
+                <DestinationOptions location={location}></DestinationOptions>
               ))}
             </select>
           </div>
