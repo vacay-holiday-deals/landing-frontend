@@ -77,7 +77,7 @@ function OfferForm({ title, destination }) {
 
     setTimeout(() => {
       setIsSending(false)
-    }, 2000)
+    }, 4500)
 
     const details = {
       Package: title,
@@ -86,6 +86,7 @@ function OfferForm({ title, destination }) {
       Nationality: nationality,
       Number: number,
       Departure: departure,
+      Destination: destinations,
       Adults: adult,
       Children: children,
       Budget: budget,
