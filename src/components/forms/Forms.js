@@ -9,7 +9,7 @@ import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
 import history from '../../routes/AppHistory'
-import DestinationOptions from '../DestinationOptions'
+import uuid from 'uuid'
 
 function OfferForm({ title, destination }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -217,7 +217,7 @@ function OfferForm({ title, destination }) {
               required={true}>
               <option value={destination[0]}>{destination[0]}</option>
               {destination.map(location => (
-                <DestinationOptions location={location}></DestinationOptions>
+                <option key={uuid.v4()}>{location}</option>
               ))}
             </select>
           </div>
