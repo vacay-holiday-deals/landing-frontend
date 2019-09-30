@@ -32,6 +32,7 @@ function Landing(props) {
 
   useEffect(() => {
     const { title } = props.match.params
+    console.log(title)
     initGA(googleTrackingId)
     initPixel(pixelTrackingId)
     PageView()

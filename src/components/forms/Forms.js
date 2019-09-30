@@ -25,6 +25,7 @@ function OfferForm({ title }) {
   }, [])
 
   const { destination } = offer
+  console.log(destination)
 
   const alert = useAlert()
 
@@ -226,7 +227,12 @@ function OfferForm({ title }) {
               }}
               value={destinations}
               required={true}>
-              <option value={destination[0]}>{destination[0]}</option>
+              {destination[0] !== '' ? (
+                <option value={destination[0]}>{destination[0]}</option>
+              ) : (
+                <option value='choose'>Choose</option>
+              )}
+
               {destination.map(location => (
                 <option key={uuid.v4()}>{location}</option>
               ))}

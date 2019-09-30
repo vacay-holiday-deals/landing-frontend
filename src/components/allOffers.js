@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { TrackEvent } from './tracking/facebookTracking'
@@ -33,8 +32,9 @@ function AllOffers() {
       <div className='container-fluid landing--container'>
         <div className='landing--img'>
           <img
-            src='https://res.cloudinary.com/lostvane/image/upload/v1565157605/Projects/vacay/bkxano6dqf4buvwo1ojb.png'
+            src='https://res.cloudinary.com/lostvane/image/upload/v1568975845/testing_unsigned_upload/vhl3qtqftv0cwq2poolq.jpg'
             alt='vacay'
+            effect='blur'
             className='image'
           />
         </div>
@@ -59,7 +59,12 @@ function AllOffers() {
           <div className='content--container'>
             {!isLoaded ? (
               <div className='loader'>
-                <Loader type='Bars' color='#0068b3' height={70} width={80} />
+                <Loader
+                  type='ThreeDots'
+                  color='#0068b3'
+                  height={80}
+                  width={80}
+                />
               </div>
             ) : filteredOffers.length !== 0 ? (
               filteredOffers.map(offer => {
