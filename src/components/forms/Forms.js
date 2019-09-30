@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
@@ -8,12 +8,23 @@ import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 import history from '../../routes/AppHistory'
 import uuid from 'uuid'
 
-function OfferForm({ title, destination }) {
+function OfferForm({ title }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
+
+  const offer = useStoreState(state => state.offer)
+  const fetchOffer = useStoreActions(actions => actions.getOffer)
+
+  useEffect(() => {
+    fetchOffer()
+    // eslint-disable-next-line
+  }, [])
+
+  const { destination } = offer
 
   const alert = useAlert()
 

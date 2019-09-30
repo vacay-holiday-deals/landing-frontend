@@ -52,8 +52,7 @@ function Landing(props) {
     inclusion,
     price,
     addinfo,
-    images,
-    destination
+    images
   } = offer
 
   return (
@@ -103,7 +102,7 @@ function Landing(props) {
                   </div>
                   <div className='landing--info-form'>
                     <Sharebar title={title} image={images} />
-                    <Form title={title} destination={destination} />
+                    <Form title={title} />
                   </div>
                 </div>
               </section>
