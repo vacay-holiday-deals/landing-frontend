@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
@@ -8,24 +8,12 @@ import { TrackEvent } from '../tracking/facebookTracking'
 import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
-import { useStoreActions, useStoreState } from 'easy-peasy'
 import history from '../../routes/AppHistory'
 import uuid from 'uuid'
 
-function OfferForm({ title }) {
+function OfferForm({ title, destination }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
-  const offer = useStoreState(state => state.offer)
-  const fetchOffer = useStoreActions(actions => actions.getOffer)
-
-  useEffect(() => {
-    fetchOffer()
-    // eslint-disable-next-line
-  }, [])
-
-  const { destination } = offer
-  console.log(destination)
 
   const alert = useAlert()
 
@@ -33,7 +21,7 @@ function OfferForm({ title }) {
   const [email, setEmail] = useState('')
   const [nationality, setNationality] = useState('Kenya')
   const [number, setNumber] = useState('')
-  const [destinations, setDestinations] = useState(destination[0])
+  const [destinations, setDestinations] = useState('')
   const [departure, setDeparture] = useState(
     String(
       format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
@@ -123,7 +111,7 @@ function OfferForm({ title }) {
     setEmail('')
     setAdult(0)
     setBudget('4 star')
-    setDestinations(destination[0])
+    setDestinations('')
     setDeparture(
       String(
         format(new Date(Date.now()).toLocaleDateString('en-us'), 'YYYY-MM-DD')
@@ -227,12 +215,6 @@ function OfferForm({ title }) {
               }}
               value={destinations}
               required={true}>
-              {destination[0] !== '' ? (
-                <option value={destination[0]}>{destination[0]}</option>
-              ) : (
-                <option value='choose'>Choose</option>
-              )}
-
               {destination.map(location => (
                 <option key={uuid.v4()}>{location}</option>
               ))}
