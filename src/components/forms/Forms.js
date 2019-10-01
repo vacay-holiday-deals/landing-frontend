@@ -9,7 +9,6 @@ import { Event } from '../tracking/googleTracking'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
 import history from '../../routes/AppHistory'
-import uuid from 'uuid'
 
 function OfferForm({ title, destination }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
@@ -190,37 +189,21 @@ function OfferForm({ title, destination }) {
             />
           </div>
         </div>
-        <div className='joint'>
-          <div className='form--group'>
-            <label className='label'>departure</label>
-            <input
-              type='date'
-              placeholder='departure'
-              className='form--control'
-              onChange={e => {
-                setDeparture(e.target.value)
-              }}
-              value={departure}
-              required
-            />
-          </div>
 
-          <div className='form--group'>
-            <label className='label'>destination</label>
-            <select
-              className='form--control'
-              name='destinations'
-              onChange={e => {
-                setDestinations(e.target.value)
-              }}
-              value={destinations}
-              required={true}>
-              {destination.map(location => (
-                <option key={uuid.v4()}>{location}</option>
-              ))}
-            </select>
-          </div>
+        <div className='form--group'>
+          <label className='label'>departure</label>
+          <input
+            type='date'
+            placeholder='departure'
+            className='form--control'
+            onChange={e => {
+              setDeparture(e.target.value)
+            }}
+            value={departure}
+            required
+          />
         </div>
+
         <div className='joint'>
           <div className='form--group'>
             <label className='label'>adults : 12yrs +</label>
