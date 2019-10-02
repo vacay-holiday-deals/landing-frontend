@@ -254,7 +254,7 @@ function OfferForm({ title, destination }) {
           <select
             className='form--control select'
             onChange={e => {
-              setBudget({ value: e.target.value })
+              setBudget(e.target.value)
             }}
             required
             value={budget}>
