@@ -145,7 +145,7 @@
 
       &-tabs {
         width: 100vw;
-        height: 130vh;
+        height: auto;
 
         & .info--title {
           margin: 0 1rem;
@@ -158,9 +158,10 @@
           margin: 1rem 0;
           height: auto;
           width: 100%;
+          font-size: 0.9rem;
 
           h5 {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
           }
         }

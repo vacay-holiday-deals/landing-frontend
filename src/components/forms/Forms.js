@@ -200,7 +200,7 @@ function OfferForm({ title, destination }) {
           </div>
 
           <div className='form--group'>
-            <label className='label'>departure</label>
+            <label className='label'>destination</label>
             <select
               name='destination'
               value={destinations}

@@ -111,9 +111,8 @@
       height: auto;
       width: 100%;
       overflow: auto;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       line-height: 1.6rem;
-      font-size: 0.87rem;
       &::-webkit-scrollbar {
         width: 0.4rem;
       }
@@ -125,7 +124,7 @@
       h1,
       h2,
       h3 {
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: bold;
       }
       table {
