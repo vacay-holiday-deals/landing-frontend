@@ -1,39 +1,27 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import 'react-lazy-load-image-component/src/effects/blur.css'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { TrackEvent } from './tracking/facebookTracking'
 import { Event } from './tracking/googleTracking'
+import { useStoreActions, useStoreState } from 'easy-peasy'
 require('dotenv').config()
 
 function AllOffers() {
-  const URL_PROXY = process.env.REACT_APP_PROXY_URL
-  const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
-  const [offers, setOffers] = useState([])
   const [isLoaded, setLoaded] = useState(false)
   const [value, setValue] = useState('')
+
+  const offers = useStoreState(state => state.offers)
+  const fetchOffers = useStoreActions(actions => actions.getOffers)
+
   useEffect(() => {
-    axios
-      .get(`${URL_PROXY}:${PORT_NUM}/api/getoffer`)
-      .then(res => {
-        setTimeout(() => {
-          setLoaded(true)
-        }, 200)
-        setOffers(res.data)
-      })
-      .catch(error => {
-        console.log(error)
-        setLoaded(true)
-      })
+    setTimeout(() => {
+      setLoaded(true)
+    }, 1000)
+    fetchOffers()
     // eslint-disable-next-line
   }, [])
-  const height = '100%'
-  const width = '100%'
 
   let filteredOffers = offers.filter(offer => {
     return offer.title.toLowerCase().indexOf(value.toLowerCase()) !== -1
@@ -43,13 +31,11 @@ function AllOffers() {
     <Fragment>
       <div className='container-fluid landing--container'>
         <div className='landing--img'>
-          <LazyLoadImage
-            src='images/images/beach.jpg'
+          <img
+            src='https://res.cloudinary.com/lostvane/image/upload/v1568975845/testing_unsigned_upload/vhl3qtqftv0cwq2poolq.jpg'
             alt='vacay'
             effect='blur'
             className='image'
-            height={height}
-            width={width}
           />
         </div>
 
@@ -73,7 +59,12 @@ function AllOffers() {
           <div className='content--container'>
             {!isLoaded ? (
               <div className='loader'>
-                <Loader type='Bars' color='#0068b3' height={70} width={80} />
+                <Loader
+                  type='ThreeDots'
+                  color='#0068b3'
+                  height={80}
+                  width={80}
+                />
               </div>
             ) : filteredOffers.length !== 0 ? (
               filteredOffers.map(offer => {

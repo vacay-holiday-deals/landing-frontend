@@ -1,0 +1,88 @@
+.confirmation {
+  height: auto;
+  width: 100%;
+  position: relative;
+
+  .confirmation--wrapper {
+    width: 80%;
+    margin: 1rem 10%;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow-1);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .confirm--header {
+      height: 15vh;
+      width: 100%;
+      padding: 10px;
+
+      & > h3 {
+        font-size: 2rem;
+      }
+    }
+    .confirm--message {
+      height: auto;
+      padding: 20px;
+      width: 60%;
+
+      & > p {
+        font-size: 1rem;
+      }
+    }
+    .confirm--actions {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .confirm--btn {
+        height: 3.5rem;
+        background: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white-color);
+        border-radius: 5px;
+        box-shadow: var(--box-shadow);
+      }
+    }
+  }
+}
+
+// media queries
+@media only screen and (min-width: 320px) and (max-width: 700px) {
+  .confirmation {
+    .confirmation--wrapper {
+      width: 90%;
+      margin: 0.5rem 5%;
+      padding: 15px;
+
+      .confirm--header {
+        height: 10vh;
+        padding: 5px;
+
+        & > h3 {
+          font-size: 1.3rem;
+        }
+      }
+      .confirm--message {
+        padding: 10px;
+        width: 100%;
+
+        & > p {
+          font-size: 0.9rem;
+        }
+      }
+      .confirm--actions {
+        padding: 10px;
+        justify-content: flex-start;
+      }
+    }
+  }
+}

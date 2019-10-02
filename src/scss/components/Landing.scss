@@ -51,11 +51,11 @@
 
     &-container {
       height: auto;
-      width: 100vw;
+      width: 95%;
       padding: 20px;
       display: flex;
       justify-content: space-between;
-      margin: 1rem 0;
+      margin: 1rem 2.5%;
     }
 
     &-tabs {
@@ -64,24 +64,22 @@
       justify-content: flex-start;
       width: 60vw;
       align-items: flex-start;
-      height: auto;
+      height: 150vh;
       padding: 0;
 
       & .info--title {
         padding: 10px;
         font-size: 1.2rem;
-        font-weight: 700;
+        font-weight: 600;
         margin: 1rem 0;
-        text-transform: uppercase;
-        color: var(--dark-color);
-        font-family: var(--secondary-heading-font);
+        text-transform: lowercase;
         width: 80%;
+        font-family: var(--primary--header-font);
       }
       & > .more--info {
         width: 80%;
         height: auto;
-        max-height: 50vh;
-        padding: 20px 20px;
+        padding: 10px 10px;
         overflow: auto;
         line-height: 2;
         font-size: 0.9rem;
@@ -94,6 +92,15 @@
         &::-webkit-scrollbar-https {
           background-color: var(--primary-grey);
           border-radius: 5px;
+        }
+        h1,
+        h2,
+        h3 {
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+        ul {
+          list-style-type: circle;
         }
       }
     }
@@ -128,6 +135,8 @@
     &--info {
       &-container {
         padding: 0;
+        width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -136,7 +145,7 @@
 
       &-tabs {
         width: 100vw;
-        max-height: 100vh;
+        height: 130vh;
 
         & .info--title {
           margin: 0 1rem;
@@ -152,8 +161,7 @@
 
           h5 {
             font-size: 0.9rem;
-            font-family: var(--primary-font);
-            font-weight: 600;
+            font-weight: 500;
           }
         }
       }

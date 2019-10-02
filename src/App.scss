@@ -25,6 +25,63 @@ body {
   }
 }
 
+ul {
+  list-style: none;
+}
+
+[type='date']::-webkit-inner-spin-button {
+  display: none;
+}
+[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 0.9;
+  color: #777;
+}
+
+.form--group {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  & > label {
+    color: #888;
+    font-family: var(--secondary-font);
+  }
+
+  & > .form--control {
+    height: 3rem;
+    border: 0.5px solid #eee;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background: var(--white-color);
+    box-shadow: var(--box-shadow-2);
+    position: relative;
+
+    &::placeholder {
+      color: #999;
+      font-family: var(--secondary-font);
+      font-size: 0.95rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & > .textarea {
+    border: 0.5px solid #eee;
+    border-radius: 3px;
+    padding: 10px 20px;
+    box-shadow: var(--box-shadow-2);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .App {
   display: flex;
   justify-content: space-between;
