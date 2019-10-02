@@ -32,7 +32,7 @@ function AllOffers() {
       <div className='container-fluid landing--container'>
         <div className='landing--img'>
           <img
-            src='https://res.cloudinary.com/lostvane/image/upload/v1568975845/testing_unsigned_upload/vhl3qtqftv0cwq2poolq.jpg'
+            src='https://res.cloudinary.com/lostvane/image/upload/v1565157605/Projects/vacay/yc1fghxbyghb8xeqitks.png'
             alt='vacay'
             effect='blur'
             className='image'

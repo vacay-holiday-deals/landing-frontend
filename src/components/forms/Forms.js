@@ -4,17 +4,13 @@ import Country from 'country-telephone-data'
 import Loader from 'react-loader-spinner'
 import { format } from 'date-fns'
 import PropTypes from 'prop-types'
-import { TrackEvent } from '../tracking/facebookTracking'
-import { Event } from '../tracking/googleTracking'
-import { useAlert } from 'react-alert'
 import axios from 'axios'
 import history from '../../routes/AppHistory'
+import uuid from 'uuid'
 
 function OfferForm({ title, destination }) {
   const URL_PROXY = process.env.REACT_APP_PROXY_URL
   const PORT_NUM = process.env.REACT_APP_PORT_NUM
-
-  const alert = useAlert()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -64,8 +60,6 @@ function OfferForm({ title, destination }) {
     e.preventDefault()
     // adding google analytics and facebook pixel analytics
     // google
-    Event('SUBMIT', 'Submiting details', 'SUBMIT_FORM_DETAILS')
-    TrackEvent('SUBMIT', 'SUBMITING_FORM_DETAILSs')
 
     const isValidated = validate()
     if (!isValidated) {
@@ -190,18 +184,37 @@ function OfferForm({ title, destination }) {
           </div>
         </div>
 
-        <div className='form--group'>
-          <label className='label'>departure</label>
-          <input
-            type='date'
-            placeholder='departure'
-            className='form--control'
-            onChange={e => {
-              setDeparture(e.target.value)
-            }}
-            value={departure}
-            required
-          />
+        <div className='joint'>
+          <div className='form--group'>
+            <label className='label'>departure</label>
+            <input
+              type='date'
+              placeholder='departure'
+              className='form--control'
+              onChange={e => {
+                setDeparture(e.target.value)
+              }}
+              value={departure}
+              required
+            />
+          </div>
+
+          <div className='form--group'>
+            <label className='label'>departure</label>
+            <select
+              name='destination'
+              value={destinations}
+              className='form--control'
+              onChange={e => {
+                setDestinations(e.target.value)
+              }}>
+              {destination && destination.length ? (
+                destination.map(dest => <option key={uuid.v4()}>{dest}</option>)
+              ) : (
+                <option>choose</option>
+              )}
+            </select>
+          </div>
         </div>
 
         <div className='joint'>
